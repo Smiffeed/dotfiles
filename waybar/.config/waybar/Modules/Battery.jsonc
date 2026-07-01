@@ -1,0 +1,35 @@
+{
+  "battery": { "states": {"warning": 25,"critical": 15 },
+    "interval": 1,
+    "format": "{icon} {capacity}%",
+    "format-time": "{H} hours {M} minutes",
+    "on-Click": "mode",
+    "on-click-right": "foot --app-id battery bash -c 'upower -i /org/freedesktop/UPower/devices/battery_BAT0; read'",
+    "format-warning": "{icon} Battery low {capacity}%",
+    "format-critical": "󰂃 Connect charger {capacity}%",
+    "format-full": "󰂄 {capacity}%",
+    "format-plugged": "󰂄 {capacity}%",
+    "format-charged": "{icon} {capacity}%",
+    //"format-alt": "{icon}  Health ({health}%)  Charge cycles ({cycles})",
+    "format-alt": "{icon} {time}",
+    "format-icons": { 
+      "default": [ 
+        "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" 
+      ],
+      "charging": [
+        "󰢟", "󰢜", "󰂆", "󰂇", "󰢝", "󰂉", "󰢞", "󰂊", "󰂅"
+      ]
+    },
+    "tooltip": true,
+    "tooltip-format": "Battery level: {capacity}%\nPower usage: {power} watts\nDischarge in: {time}\nBattery health: {health}%\nCharge cycles: {cycles}",
+    "tooltip-format-charging": "Charging at {capacity}%\nPower usage: {power} watts\nFull charge in: {time}\nBattery health: {health}%\nCharge cycles: {cycles}",
+    "tooltip-format-critical": "Battery low: {capacity}%\nPower usage: {power} watts\nShutdown in: {time}\nConnect the charger immediately.",
+    "tooltip-format-warning": "Battery low: {capacity}%\nPower usage: {power} watts\nDischarge in: {time}\nConnect the charger soon.",
+
+    "events": {
+      "on-discharging-warning": "notify-send 'Battery Low (25%)' 'Connect the charger soon'",
+      "on-discharging-critical": "notify-send 'Battery Critical (15%)' 'Connect the charger immediately'",
+    }
+  }
+
+}
