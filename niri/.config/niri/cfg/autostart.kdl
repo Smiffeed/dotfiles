@@ -1,5 +1,7 @@
-spawn-sh-at-startup "/usr/lib/polkit-gnome-authentication-agent-1 &"
 spawn-sh-at-startup "swaybg -i ~/Pictures/ex33_wallpaper.jpg -m fill &"
 spawn-at-startup "wl-clip-persist" "--clipboard" "both"
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
+spawn-at-startup "kdeconnectd"
+spawn-sh-at-startup "foot --server"
+spawn-sh-at-startup "/usr/lib/polkit-gnome-authentication-agent-1 &"
