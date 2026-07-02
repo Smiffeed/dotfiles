@@ -1,0 +1,53 @@
+# Layout
+max-visible=5
+layer=overlay
+anchor=top-right
+margin=8
+width=260
+# height removed for dynamic resizing
+
+# Styling (Atomic Deep Dark, Borderless)
+background-color=#121317d9
+text-color=#abb2bfff
+progress-color=#61afefff
+border-size=0
+border-radius=10
+padding=10
+
+# Text Formatting (Shows "App Name: Title" then "Body")
+format=<b>%a: %s</b>\n%b
+font=FiraCode Nerd Font 10
+
+# Icons
+max-icon-size=48
+# icon-path removed to follow system theme automatically
+
+# Timing
+default-timeout=8000
+ignore-timeout=0
+
+# History 
+max-history=50
+group-by=app-name
+
+# --- Urgency levels ---
+
+[urgency=low]
+text-color=#5c6370ff
+default-timeout=4000
+
+[urgency=normal]
+text-color=#abb2bfff
+default-timeout=8000
+
+[urgency=critical]
+text-color=#e06c75ff
+default-timeout=0
+
+# --- Do Not Disturb Modes ---
+
+[mode=do-not-disturb]
+invisible=1
+
+[mode=do-not-disturb app-name=notify-send]
+invisible=0
