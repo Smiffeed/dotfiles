@@ -2,20 +2,28 @@
         geometry-corner-radius 20 // Set every window radius to 20
         clip-to-geometry true
     }
-    layer-rule {
-        match namespace="waybar"
 
-        background-effect {
-          blur true
-          xray false
-        }
-
-    }
     window-rule {
       match app-id="foot"
-      
       background-effect {
         blur true
         xray false
       }
+    }
+
+    layer-rule {
+        match namespace="waybar"
+        background-effect {
+          blur true
+          xray false
+        }
+    }
+
+    layer-rule {
+      geometry-corner-radius 10
+        match namespace="^launcher$"
+        background-effect {
+          blur true
+          xray false
+        }
     }
