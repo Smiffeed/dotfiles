@@ -33,11 +33,9 @@ group-by=app-name
 # --- Urgency levels ---
 
 [urgency=low]
-text-color=#5c6370ff
 default-timeout=4000
 
 [urgency=normal]
-text-color=#abb2bfff
 default-timeout=8000
 
 [urgency=critical]

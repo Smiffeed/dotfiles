@@ -4,7 +4,8 @@
 input {
     keyboard {
         xkb {
-            layout "us" // Use the American keyboard layout
+            layout "us,th" // American,Thai keyboard layout (I'm from Thailand, just remove `th`)
+            options "grp:win_space_toggle"
         }
         numlock // Enable numlock on startup
     }
