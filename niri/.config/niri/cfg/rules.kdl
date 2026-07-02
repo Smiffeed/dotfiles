@@ -9,4 +9,13 @@
           blur true
           xray false
         }
+
+    }
+    window-rule {
+      match app-id="foot"
+      
+      background-effect {
+        blur true
+        xray false
+      }
     }

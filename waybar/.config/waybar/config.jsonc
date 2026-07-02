@@ -12,7 +12,8 @@
   ],
 
   "custom/logo": {
-    "format" : "󰣇   Niri",
+    //"format" : "󰣇   Niri", //arch linux
+    "format" : "   Niri", //fedora
     "tooltip": false,
     "tooltip-format": "App launcher",
     "on-click": "sh -c 'pkill -x fuzzel || fuzzel'",

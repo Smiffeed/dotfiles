@@ -8,6 +8,11 @@ input {
         }
         numlock // Enable numlock on startup
     }
+    
+    mouse {
+        accel-speed -0.04 // Adjust this value between -1.0 (very slow) and 1.0 (very fast)
+        accel-profile "flat" // Optional: disables acceleration for consistent speed
+    }
 
     touchpad {
         tap // Enable tap-to-click

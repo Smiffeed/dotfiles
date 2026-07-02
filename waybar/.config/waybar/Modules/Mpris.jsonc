@@ -5,7 +5,7 @@
     "on-scroll-down": "playerctl position 3+",
     "on-scroll-up": "playerctl position 2-",
     "interval": 1,
-    "max-length": 16,
+    "max-length": 20,
 	  "format": "{player_icon} {title}",
     "format-status":"",
 	  "format-paused": "{status_icon} {title}",
