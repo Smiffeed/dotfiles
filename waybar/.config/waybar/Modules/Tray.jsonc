@@ -1,7 +1,7 @@
 {
    "tray": {
     "icon-size": 20,
-    "show-passive-items": true,
+    "show-passive-items": false,
     "reverse-direction": false,
     "smooth-scrolling-threshold": 1.0
   }

@@ -7,6 +7,6 @@
 	"tooltip-format-connected": "You are connected to {device_enumerate}",
 	"tooltip-format-enumerate-connected": "{device_alias}",
   "on-click-middle": "rfkill toggle bluetooth",
-  "on-click-right": "foot -e bluetui"
+  "on-click-right": "foot -e ~/.cargo/bin/bluetui"
   }
 }

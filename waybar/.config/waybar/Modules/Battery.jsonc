@@ -9,7 +9,7 @@
     "format-critical": "󰂃 Connect charger {capacity}%",
     "format-full": "󰂄 {capacity}%",
     "format-plugged": "󰂄 {capacity}%",
-    "format-charged": "{icon} {capacity}%",
+    "format-charged": "{icon}  {capacity}%",
     //"format-alt": "{icon}  Health ({health}%)  Charge cycles ({cycles})",
     "format-alt": "{icon} {time}",
     "format-icons": { 
