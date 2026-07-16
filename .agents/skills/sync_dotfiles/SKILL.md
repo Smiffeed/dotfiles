@@ -17,4 +17,4 @@ To commit and push the latest dotfile changes:
    - `fix(zsh): resolve syntax error in aliases`
    - `chore: update stow symlinks`
 6. Commit the changes: `git commit -m "your conventional commit message"`
-7. Push to the repository: `git push origin main`
+7. Push to the repository: `git push origin master`

@@ -10,4 +10,4 @@ if [ -z "$1" ]; then
 fi
 
 git commit -m "$1"
-git push origin main
+git push origin master
