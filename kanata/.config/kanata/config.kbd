@@ -27,7 +27,7 @@
   ;; Stardew Animation Cancel Macro
   ;; 1. The delay and perfectly timed key holds
   ani (macro 
-    125 
+    150 
     (on-press press-vkey vr) (on-press press-vkey vdel) (on-press press-vkey vrsft) 
     15 
     (on-press release-vkey vr) (on-press release-vkey vdel) (on-press release-vkey vrsft)
