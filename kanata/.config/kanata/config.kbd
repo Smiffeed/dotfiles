@@ -1,0 +1,32 @@
+(defcfg
+  process-unmapped-keys yes
+  linux-dev-names-include (
+    "ITE Tech. Inc. ITE Device(8296) Keyboard"
+    "AT Translated Set 2 keyboard"
+  )
+)
+
+;; defsrc must include every physical key we plan to modify or use in any layer.
+(defsrc
+  caps d f h j k l
+)
+
+(defalias
+  ;; Tap Caps for Backspace, hold to activate the 'nav' layer
+  nav-bspc (tap-hold 200 200 bspc (layer-toggle nav))
+  
+  ;; Tap for letter, hold for modifier (200ms timeout)
+  d-mod (tap-hold 200 200 d lsft)
+  f-mod (tap-hold 200 200 f lctl)
+)
+
+;; The base layer maps 1-to-1 with defsrc
+(deflayer base
+  @nav-bspc @d-mod @f-mod h j k l
+)
+
+;; The nav layer. The underscores (_) mean "fall back to normal behavior" 
+;; so d and f still act like normal keys when the nav layer is active.
+(deflayer nav
+  _         _      _      left down up right
+)

@@ -10,6 +10,24 @@ This setup is a curated blend of various community configurations that I have co
 
 ---
 
+## 🧰 Tools & Software
+
+This setup heavily relies on modern Wayland-native and terminal-centric tools for speed and minimalism:
+
+| Category | Tool / Software | Notes |
+| :--- | :--- | :--- |
+| **Compositor** | [Niri](https://github.com/YaLTeR/niri) | Scrollable-tiling Wayland compositor |
+| **Terminal** | [Foot](https://codeberg.org/dnkl/foot) | Fast, lightweight, Wayland-native terminal emulator |
+| **App Launcher** | [Fuzzel](https://codeberg.org/dnkl/fuzzel) | Application launcher for Wayland |
+| **File Manager** | [Yazi](https://github.com/sxyazi/yazi) | Blazing fast terminal file manager |
+| **Emoji Picker** | [Bemoji](https://github.com/marty-oehme/bemoji) | Configured with auto-paste bypass for Wayland |
+| **Lock / Power** | [wlogout](https://github.com/ArtsyMacaw/wlogout) | Wayland logout menu |
+| **Keyboard Mod** | [Kanata](https://github.com/jtroo/kanata) | Advanced software keyboard remapping |
+| **Browser** | [Brave](https://brave.com/) | Primary web browser |
+| **Notes** | [Obsidian](https://obsidian.md/) | PKM tool (uses custom CSS for emoji rendering) |
+
+---
+
 ## 🛠️ How it Works (GNU Stow)
 
 This repository manages configuration files using **GNU Stow**. 
