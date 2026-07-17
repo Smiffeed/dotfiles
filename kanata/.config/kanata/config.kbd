@@ -10,6 +10,13 @@
   caps w d f h j k l spc f12 ]
 )
 
+(defvirtualkeys
+  vc c
+  vr r
+  vdel del
+  vrsft rsft
+)
+
 (defalias
   ;; Tap Caps for Backspace, hold to activate the 'nav' layer
   nav-bspc (tap-hold 200 200 bspc (layer-toggle nav))
@@ -17,6 +24,20 @@
   ;; Layer Toggles
   tog-sd (layer-switch stardew)
   tog-bs (layer-switch base)
+
+  ;; Stardew Animation Cancel Macro with Native Cooldown!
+  ;; 1. Instantly switch to the cooldown layer (where ] does nothing)
+  ;; 2. Perform the perfectly timed animation cancel
+  ;; 3. Switch back to the stardew layer when finished
+  ani (macro 
+    (layer-switch stardew-cd)
+    (on-press press-vkey vc) 16 (on-press release-vkey vc)
+    220 
+    (on-press press-vkey vr) (on-press press-vkey vdel) (on-press press-vkey vrsft) 
+    15 
+    (on-press release-vkey vr) (on-press release-vkey vdel) (on-press release-vkey vrsft)
+    (layer-switch stardew)
+  )
 )
 
 (deflayer base
@@ -30,6 +51,12 @@
 )
 
 (deflayer stardew
-  ;; Gaming mode: Space is normal. ']' triggers F20, which is handled by Niri with a cooldown!
-  @nav-bspc w d f h j k l spc @tog-bs f20
+  ;; Gaming mode: Space is normal. ']' triggers the animation cancel macro!
+  @nav-bspc w d f h j k l spc @tog-bs @ani
+)
+
+(deflayer stardew-cd
+  ;; COOLDOWN LAYER: Identical to stardew layer, but ']' is disabled (XX).
+  ;; This prevents the macro from being restarted if the user spams the key!
+  @nav-bspc w d f h j k l spc @tog-bs XX
 )
