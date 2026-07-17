@@ -14,29 +14,24 @@
   ;; Tap Caps for Backspace, hold to activate the 'nav' layer
   nav-bspc (tap-hold 200 200 bspc (layer-toggle nav))
   
-  ;; Tap for letter, hold for modifier (200ms timeout)
-  d-mod (tap-hold 200 200 d lsft)
-  f-mod (tap-hold 200 200 f lctl)
-  
   ;; Layer Toggles
   tog-sd (layer-switch stardew)
   tog-bs (layer-switch base)
   
   ;; Stardew Animation Cancel Macro
-  ;; Presses R, Right Shift, and Delete simultaneously.
   ani (multi r rsft del)
 )
 
 (deflayer base
-  @nav-bspc w @d-mod @f-mod h j k l spc @tog-sd
+  ;; D and F are normal keys here!
+  @nav-bspc w d f h j k l spc @tog-sd
 )
 
 (deflayer nav
-  _         M-spc _      _      left down up right _ _
+  ;; While holding Capslock: D is Shift, F is Ctrl
+  _         M-spc lsft lctl left down up right _ _
 )
 
-;; Gaming layer: removes the tap-hold mods from D and F so you can hold them to move!
-;; Spacebar triggers the animation cancel macro. F12 returns to base.
 (deflayer stardew
   caps w d f h j k l @ani @tog-bs
 )
