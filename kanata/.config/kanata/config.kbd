@@ -15,6 +15,7 @@
   vr r
   vdel del
   vrsft rsft
+  vstardew (layer-switch stardew)
 )
 
 (defalias
@@ -26,18 +27,17 @@
   tog-bs (layer-switch base)
 
   ;; Stardew Animation Cancel Macro with Native Cooldown!
-  ;; 1. Instantly switch to the cooldown layer (where ] does nothing)
-  ;; 2. Perform the perfectly timed animation cancel
-  ;; 3. Switch back to the stardew layer when finished
   ani (macro 
-    (layer-switch stardew-cd)
     (on-press press-vkey vc) 16 (on-press release-vkey vc)
     220 
     (on-press press-vkey vr) (on-press press-vkey vdel) (on-press press-vkey vrsft) 
     15 
     (on-press release-vkey vr) (on-press release-vkey vdel) (on-press release-vkey vrsft)
-    (layer-switch stardew)
+    (on-press press-vkey vstardew) (on-press release-vkey vstardew)
   )
+
+  ;; Trigger: Switch to cooldown layer instantly, then run the macro asynchronously.
+  trigger (multi (layer-switch stardew-cd) @ani)
 )
 
 (deflayer base
@@ -52,7 +52,7 @@
 
 (deflayer stardew
   ;; Gaming mode: Space is normal. ']' triggers the animation cancel macro!
-  @nav-bspc w d f h j k l spc @tog-bs @ani
+  @nav-bspc w d f h j k l spc @tog-bs @trigger
 )
 
 (deflayer stardew-cd
