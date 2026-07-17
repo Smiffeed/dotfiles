@@ -10,6 +10,12 @@
   caps w d f h j k l spc f12 ]
 )
 
+(defvirtualkeys
+  vr r
+  vdel del
+  vrsft rsft
+)
+
 (defalias
   ;; Tap Caps for Backspace, hold to activate the 'nav' layer
   nav-bspc (tap-hold 200 200 bspc (layer-toggle nav))
@@ -21,8 +27,13 @@
   ;; Stardew Animation Cancel Macro
   ;; 1. Left Click to use tool
   ;; 2. Wait 125ms for animation to start
-  ;; 3. Trigger F20 (which tells Niri to use wtype to precisely hold R+Del+RShift)
-  ani (macro mlft 125 f20)
+  ;; 3. Precisely hold R, Delete, and Right Shift simultaneously for 15ms, then release.
+  ani (macro 
+    mlft 125 
+    (on-press press-vkey vr) (on-press press-vkey vdel) (on-press press-vkey vrsft) 
+    15 
+    (on-press release-vkey vr) (on-press release-vkey vdel) (on-press release-vkey vrsft)
+  )
 )
 
 (deflayer base
