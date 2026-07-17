@@ -1,8 +1,13 @@
 (defcfg
   process-unmapped-keys yes
+  linux-device-detect-mode all
   linux-dev-names-include (
     "ITE Tech. Inc. ITE Device(8296) Keyboard"
     "AT Translated Set 2 keyboard"
+    "Logitech USB Receiver"
+    "Logitech USB Receiver Mouse"
+    "E9"
+    "E9 Keyboard"
   )
 )
 
