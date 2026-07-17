@@ -7,7 +7,7 @@
 )
 
 (defsrc
-  caps w d f h j k l spc f12 ]
+  caps w d f h j k l spc f12 mbck
 )
 
 (defvirtualkeys
@@ -42,7 +42,7 @@
 
 (deflayer base
   ;; D and F are normal keys here!
-  @nav-bspc w d f h j k l spc @tog-sd ]
+  @nav-bspc w d f h j k l spc @tog-sd mbck
 )
 
 (deflayer nav
@@ -51,12 +51,12 @@
 )
 
 (deflayer stardew
-  ;; Gaming mode: Space is normal. ']' triggers the animation cancel macro!
+  ;; Gaming mode: Space is normal. 'mbck' triggers the animation cancel macro!
   @nav-bspc w d f h j k l spc @tog-bs @trigger
 )
 
 (deflayer stardew-cd
-  ;; COOLDOWN LAYER: Identical to stardew layer, but ']' is disabled (XX).
+  ;; COOLDOWN LAYER: Identical to stardew layer, but 'mbck' is disabled (XX).
   ;; This prevents the macro from being restarted if the user spams the key!
   @nav-bspc w d f h j k l spc @tog-bs XX
 )
