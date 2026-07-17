@@ -139,7 +139,7 @@ stow -D -t ~ niri waybar
 
 ## 🤖 AI Agent Integration & Commits
 
-This repository includes custom AI Agent Skills (in `.agents/skills/`) designed for AI assistants to easily manage this repository. When working with an agent, it automatically knows how to deploy, add, and push configurations using Stow.
+This repository includes custom AI Agent Skills (in `.agents/skills/`) designed specifically for my own AI assistant to help me manage this repository. **These are just for my personal workflow—other people do not need to use them to install or run these dotfiles.** However, you are welcome to look at them to see how I automate things!
 
 ### Syncing Changes
 When pushing updates, we strictly use **Conventional Commits** (e.g., `feat(niri): update keybinds`). A script is provided to enforce this workflow:
