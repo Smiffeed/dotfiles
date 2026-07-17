@@ -21,8 +21,8 @@
   ;; Stardew Animation Cancel Macro
   ;; 1. Left Click to use tool
   ;; 2. Wait 125ms for animation to start
-  ;; 3. Tap R, Delete, and Right Shift to cancel animation
-  ani (macro mlft 125 r del rsft)
+  ;; 3. Tap R, Delete, and Right Shift with 20ms delays so the game engine registers them
+  ani (macro mlft 125 r 20 del 20 rsft)
 )
 
 (deflayer base
