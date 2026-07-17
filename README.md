@@ -12,7 +12,8 @@ This setup is a curated blend of various community configurations that I have co
 
 ## 🧰 Tools & Software
 
-This setup heavily relies on modern Wayland-native and terminal-centric tools for speed and minimalism:
+### 1. Core Stack
+These are the foundational tools that make up this desktop environment:
 
 | Category | Tool / Software | Notes |
 | :--- | :--- | :--- |
@@ -20,11 +21,15 @@ This setup heavily relies on modern Wayland-native and terminal-centric tools fo
 | **Terminal** | [Foot](https://codeberg.org/dnkl/foot) | Fast, lightweight, Wayland-native terminal emulator |
 | **App Launcher** | [Fuzzel](https://codeberg.org/dnkl/fuzzel) | Application launcher for Wayland |
 | **File Manager** | [Yazi](https://github.com/sxyazi/yazi) | Blazing fast terminal file manager |
-| **Emoji Picker** | [Bemoji](https://github.com/marty-oehme/bemoji) | Configured with auto-paste bypass for Wayland |
 | **Lock / Power** | [wlogout](https://github.com/ArtsyMacaw/wlogout) | Wayland logout menu |
+
+### 2. Optional & Taste
+These tools are heavily customized to my personal preferences, but are completely optional:
+
+| Category | Tool / Software | Notes |
+| :--- | :--- | :--- |
+| **Emoji Picker** | [Bemoji](https://github.com/marty-oehme/bemoji) | Configured with auto-paste bypass for Wayland |
 | **Keyboard Mod** | [Kanata](https://github.com/jtroo/kanata) | Advanced software keyboard remapping |
-| **Browser** | [Brave](https://brave.com/) | Primary web browser |
-| **Notes** | [Obsidian](https://obsidian.md/) | PKM tool (uses custom CSS for emoji rendering) |
 
 ---
 
