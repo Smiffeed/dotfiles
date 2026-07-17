@@ -19,7 +19,10 @@
   tog-bs (layer-switch base)
   
   ;; Stardew Animation Cancel Macro
-  ani (multi r rsft del)
+  ;; 1. Left Click to use tool
+  ;; 2. Wait 125ms for animation to start
+  ;; 3. Tap R, Delete, and Right Shift to cancel animation
+  ani (macro mlft 125 r del rsft)
 )
 
 (deflayer base
