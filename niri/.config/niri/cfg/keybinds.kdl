@@ -9,6 +9,7 @@ binds {
     MOD+SHIFT+ESCAPE                     { show-hotkey-overlay; }
 
     // ─── Applications ───
+    F20 cooldown-ms=260 { spawn-sh "wtype -P c -s 16 -p c -s 220 -P r -P Delete -P Shift_R -s 15 -p r -p Delete -p Shift_R"; }
     MOD+RETURN                          hotkey-overlay-title="Open Terminal: foot" { spawn "foot"; }
     MOD+E                               hotkey-overlay-title="Open App Launcher: Fuzzel launcher" { spawn-sh "fuzzel"; }
     MOD+B                               hotkey-overlay-title="Open Browser: brave" { spawn "brave-browser"; }
