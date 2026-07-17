@@ -14,6 +14,8 @@ binds {
     MOD+B                               hotkey-overlay-title="Open Browser: brave" { spawn "brave-browser"; }
     MOD+ALT+L                           hotkey-overlay-title="Lock Screen: wlogout lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     MOD+SHIFT+E				{ quit; }
+    // Launch emoji picker and type the selected character
+    Mod+Period { spawn "rofimoji" "--action" "type" "--selector-args" "-theme-str 'window {width: 30%;}'"; }
 
     // Please choose your own file manager.
     MOD+E                               hotkey-overlay-title="File Manager: yazi" { spawn-sh "foot yazi"; }
