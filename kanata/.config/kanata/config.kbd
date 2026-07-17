@@ -11,6 +11,7 @@
 )
 
 (defvirtualkeys
+  vc c
   vr r
   vdel del
   vrsft rsft
@@ -25,16 +26,15 @@
   tog-bs (layer-switch base)
 
   ;; Stardew Animation Cancel Macro
-  ;; 1. The delay and perfectly timed key holds
+  ;; Uses 'C' (Stardew's default Use Tool keyboard bind) instead of Left Click
+  ;; so we can perfectly control the 16ms hold duration without relying on physical key releases!
   ani (macro 
+    (on-press press-vkey vc) 16 (on-press release-vkey vc)
     150 
     (on-press press-vkey vr) (on-press press-vkey vdel) (on-press press-vkey vrsft) 
     15 
     (on-press release-vkey vr) (on-press release-vkey vdel) (on-press release-vkey vrsft)
   )
-
-  ;; 2. Bind the mouse click directly to the physical key press via 'multi', so it lasts exactly as long as the user taps the key, ensuring the game engine registers the click!
-  full-ani (multi mlft @ani)
 )
 
 (deflayer base
@@ -49,5 +49,5 @@
 
 (deflayer stardew
   ;; Gaming mode: Space is normal. ']' triggers the animation cancel macro!
-  @nav-bspc w d f h j k l spc @tog-bs @full-ani
+  @nav-bspc w d f h j k l spc @tog-bs @ani
 )
