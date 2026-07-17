@@ -33,5 +33,5 @@
 )
 
 (deflayer stardew
-  caps w d f h j k l @ani @tog-bs
+  @nav-bspc w d f h j k l @ani @tog-bs
 )
