@@ -8,7 +8,7 @@
 
 ;; defsrc must include every physical key we plan to modify or use in any layer.
 (defsrc
-  caps d f h j k l
+  caps w d f h j k l
 )
 
 (defalias
@@ -22,11 +22,11 @@
 
 ;; The base layer maps 1-to-1 with defsrc
 (deflayer base
-  @nav-bspc @d-mod @f-mod h j k l
+  @nav-bspc w @d-mod @f-mod h j k l
 )
 
 ;; The nav layer. The underscores (_) mean "fall back to normal behavior" 
 ;; so d and f still act like normal keys when the nav layer is active.
 (deflayer nav
-  _         _      _      left down up right
+  _         M-spc _      _      left down up right
 )
