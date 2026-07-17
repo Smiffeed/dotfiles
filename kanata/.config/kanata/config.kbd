@@ -17,6 +17,12 @@
   ;; Layer Toggles
   tog-sd (layer-switch stardew)
   tog-bs (layer-switch base)
+
+  ;; Stardew Animation Cancel Macro
+  ;; 1. Left Click to use tool
+  ;; 2. Wait 125ms for animation to start
+  ;; 3. Trigger F20 (which tells Niri to use wtype to precisely hold R+Del+RShift)
+  ani (macro mlft 125 f20)
 )
 
 (deflayer base
@@ -30,6 +36,6 @@
 )
 
 (deflayer stardew
-  ;; Gaming mode: Space is normal. ']' triggers F20 which Niri uses to run the macro script!
-  @nav-bspc w d f h j k l spc @tog-bs f20
+  ;; Gaming mode: Space is normal. ']' triggers the animation cancel macro!
+  @nav-bspc w d f h j k l spc @tog-bs @ani
 )
