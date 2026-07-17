@@ -15,7 +15,7 @@ binds {
     MOD+ALT+L                           hotkey-overlay-title="Lock Screen: wlogout lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     MOD+SHIFT+E				{ quit; }
     // Launch emoji picker and type the selected character
-    MOD+PERIOD { spawn-sh "~/.local/bin/bemoji -t"; }
+    MOD+PERIOD { spawn-sh "~/.local/bin/bemoji"; }
 
     // Please choose your own file manager.
     MOD+M                               hotkey-overlay-title="File Manager: yazi" { spawn-sh "foot yazi"; }
