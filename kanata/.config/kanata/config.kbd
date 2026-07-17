@@ -30,7 +30,7 @@
   ;; so we can perfectly control the 16ms hold duration without relying on physical key releases!
   ani (macro 
     (on-press press-vkey vc) 16 (on-press release-vkey vc)
-    150 
+    220 
     (on-press press-vkey vr) (on-press press-vkey vdel) (on-press press-vkey vrsft) 
     15 
     (on-press release-vkey vr) (on-press release-vkey vdel) (on-press release-vkey vrsft)
