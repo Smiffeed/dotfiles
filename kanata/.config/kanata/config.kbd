@@ -11,7 +11,7 @@
 )
 
 (defsrc
-  caps w s d f h j k l spc f12 mbck
+  caps w s d f h j k l c spc f12 mbck
 )
 
 (defvirtualkeys
@@ -46,21 +46,21 @@
 
 (deflayer base
   ;; D and F are normal keys here!
-  @nav-bspc w s d f h j k l spc @tog-sd mbck
+  @nav-bspc w s d f h j k l c spc @tog-sd mbck
 )
 
 (deflayer nav
-  ;; While holding Capslock: S is Shift, D is Ctrl, F is Escape
-  _         M-spc lsft lctl esc left down up right _ _ _
+  ;; While holding Capslock: S is Shift, D is Ctrl, F is Escape, C is Capslock Toggle
+  _         M-spc lsft lctl esc left down up right caps _ _ _
 )
 
 (deflayer stardew
   ;; Gaming mode: Space is normal. 'mbck' triggers the animation cancel macro!
-  @nav-bspc w s d f h j k l spc @tog-bs @trigger
+  @nav-bspc w s d f h j k l c spc @tog-bs @trigger
 )
 
 (deflayer stardew-cd
   ;; COOLDOWN LAYER: Identical to stardew layer, but 'mbck' is disabled (XX).
   ;; This prevents the macro from being restarted if the user spams the key!
-  @nav-bspc w s d f h j k l spc @tog-bs XX
+  @nav-bspc w s d f h j k l c spc @tog-bs XX
 )
