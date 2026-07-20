@@ -46,3 +46,6 @@ To replicate the perfectly integrated Atomic Deep Dark terminal experience with 
 - **Theme Adjustments**: The `tmux.conf.local` uses the standard Atomic palette (Blue `#4d8cbf`, Purple `#9e60b0`, Green `#799c60`, Yellow `#b79962`, Red `#b3565d`), with brightness mathematically dimmed by ~20% for a softer aesthetic.
 - **Powerline Transparent Bug**: When using `default` for transparent backgrounds, Powerline arrows will glitch out and inherit wrong colors. To fix this, you must explicitly assign the terminal's native background color (`#121317`) to `tmux_conf_theme_status_bg`, `tmux_conf_theme_window_status_bg` and the far-right section (`tmux_conf_theme_colour_15`).
 - **Clean UI**: The mouse indicator `↗` is intentionally cleared from `tmux_conf_theme_mouse` to keep the right status bar minimal.
+
+## 6. TODO: Mouseless Navigation
+- Revisit keyboard-driven mouse navigation (like the Mouseless app or other Wayland alternatives) at a later date to find a solution that offers perfect precision for dragging, dropping, and clicking.
