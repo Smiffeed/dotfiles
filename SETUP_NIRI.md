@@ -40,3 +40,9 @@ This guide details all the specific configurations and fixes applied to this Nir
   - Created a custom Yazi flavor named `atomic` in `~/.config/yazi/flavors/atomic.yazi/flavor.toml`.
   - Configured `yazi.toml` to load the flavor using `[flavor] dark = "atomic"` and `light = "atomic"`.
   - The colors match the One Dark/Atomic palette defined globally in `foot` and `mako` (Background: `#121317`, Foreground: `#abb2bf`, Accent Blue: `#61afef`, etc.).
+
+## 5. Oh My Tmux Customization
+To replicate the perfectly integrated Atomic Deep Dark terminal experience with Powerline arrows and transparent backgrounds:
+- **Theme Adjustments**: The `tmux.conf.local` uses the standard Atomic palette (Blue `#4d8cbf`, Purple `#9e60b0`, Green `#799c60`, Yellow `#b79962`, Red `#b3565d`), with brightness mathematically dimmed by ~20% for a softer aesthetic.
+- **Powerline Transparent Bug**: When using `default` for transparent backgrounds, Powerline arrows will glitch out and inherit wrong colors. To fix this, you must explicitly assign the terminal's native background color (`#121317`) to `tmux_conf_theme_status_bg`, `tmux_conf_theme_window_status_bg` and the far-right section (`tmux_conf_theme_colour_15`).
+- **Clean UI**: The mouse indicator `↗` is intentionally cleared from `tmux_conf_theme_mouse` to keep the right status bar minimal.
