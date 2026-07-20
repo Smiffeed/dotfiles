@@ -1,4 +1,4 @@
-[mgr]
+[manager]
 hovered         = { fg = "#121317", bg = "#61afef" }
 preview_hovered = { underline = true }
 
