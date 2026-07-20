@@ -39,7 +39,6 @@ default-timeout=4000
 default-timeout=8000
 
 [urgency=critical]
-text-color=#e06c75ff
 default-timeout=0
 
 # --- Do Not Disturb Modes ---
