@@ -9,7 +9,7 @@ This guide details all the specific configurations and fixes applied to this Nir
   - Bound to `mbck` (Mouse Backward side button).
   - Uses native Kanata layer-switching to prevent macro overlaps when the button is spammed. It instantly switches to a `stardew-cd` (cooldown) layer where the trigger button is disabled until the macro finishes executing.
   - No external bloat (`ydotool`, `wtype`, `xdotool`) is required since Wayland/Stardew ignore virtual keyboards. Kanata injects directly at the kernel `evdev` level.
-- **Steam Controller Bug**: A udev rule was added to `/etc/udev/rules.d/99-kanata-no-joystick.rules` setting `ENV{ID_INPUT_JOYSTICK}=""` for the `kanata` device name. This permanently prevents Steam from misidentifying the Kanata virtual keyboard as a joystick/gamepad.
+- **Steam/Java Controller Bug**: A udev rule was added to `/etc/udev/rules.d/99-kanata-no-joystick.rules` setting `ENV{ID_INPUT_JOYSTICK}="", GROUP="root", MODE="0600"` for the `kanata` device name. This prevents Steam from misidentifying it as a gamepad, and prevents Java/LibGDX games (like Slay the Spire) from crashing with an `ArrayIndexOutOfBoundsException` when probing the virtual device.
 - **Nav Layer (Capslock)**:
   - Capslock acts as Backspace when tapped, and `nav` layer when held.
   - In `nav` layer:

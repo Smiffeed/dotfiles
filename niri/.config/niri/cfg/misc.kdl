@@ -8,6 +8,7 @@
         XDG_SESSION_TYPE "wayland"
         XDG_CURRENT_DESKTOP "niri"
         QT_QPA_PLATFORMTHEME "gtk3"
+        SDL_GAMECONTROLLER_IGNORE_DEVICES "0x0001/0x0001"
     }
 
     debug {
