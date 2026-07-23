@@ -22,6 +22,7 @@ This guide details all the specific configurations and fixes applied to this Nir
 ## 2. Display and Brightness
 - **Backlight Control**: Niri's `XF86MonBrightnessUp` and `Down` keys are mapped to `brightnessctl`.
   - **Required Package**: `brightnessctl` (`sudo dnf install brightnessctl`).
+  - **AMD Bug Fix**: Because the AMD driver unpredictably renames the backlight on boot (e.g., `amdgpu_bl1` to `amdgpu_bl2`), a `udev` rule (`/etc/udev/rules.d/90-backlight.rules`) was created to grant the `video` group write permissions to all backlight devices, and the user was added to the `video` group. This ensures `brightnessctl` always works regardless of the device name or `systemd-logind` seat state.
 - **AMD Vari-Bright (Adaptive Brightness)**: 
   - AMD's power-saving feature randomly adjusts brightness on battery based on screen content. 
   - Disabled by appending `amdgpu.abmlevel=0` to the kernel boot parameters using GRUB.
