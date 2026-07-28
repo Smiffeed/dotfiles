@@ -64,6 +64,8 @@ binds {
     MOD+SHIFT+K                         { focus-monitor-up; }
     MOD+SHIFT+DOWN                      { focus-monitor-down; }
     MOD+SHIFT+J                         { focus-monitor-down; }
+    MOD+BRACKETRIGHT                    { focus-monitor-next; }
+    MOD+BRACKETLEFT                     { focus-monitor-previous; }
 
     MOD+SHIFT+CTRL+LEFT                 { move-column-to-monitor-left; }
     MOD+SHIFT+CTRL+H                    { move-column-to-monitor-left; }
@@ -73,6 +75,8 @@ binds {
     MOD+SHIFT+CTRL+K                    { move-column-to-monitor-up; }
     MOD+SHIFT+CTRL+DOWN                 { move-column-to-monitor-down; }
     MOD+SHIFT+CTRL+J                    { move-column-to-monitor-down; }
+    MOD+CTRL+BRACKETRIGHT               { move-column-to-monitor-next; }
+    MOD+CTRL+BRACKETLEFT                { move-column-to-monitor-previous; }
 
     // ─── Workspace Switching ───
     MOD+WHEELSCROLLDOWN                 cooldown-ms=150 { focus-workspace-down; }
