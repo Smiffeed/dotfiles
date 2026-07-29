@@ -11,7 +11,7 @@ binds {
     // ─── Applications ───
     MOD+U                               hotkey-overlay-title="Window Switcher" { spawn-sh "~/.local/bin/niri-window-switcher"; }
     MOD+RETURN                          hotkey-overlay-title="Open Terminal: foot" { spawn "foot"; }
-    MOD+E                               hotkey-overlay-title="Open App Launcher: Fuzzel launcher" { spawn-sh "fuzzel"; }
+    MOD+E                               hotkey-overlay-title="File Manager: Superfile" { spawn "foot" "-e" "spf"; }
     MOD+B                               hotkey-overlay-title="Open Browser: brave" { spawn "brave-browser"; }
     MOD+ALT+L                           hotkey-overlay-title="Lock Screen: wlogout lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     MOD+SHIFT+E				{ quit; }
@@ -19,7 +19,7 @@ binds {
     MOD+PERIOD { spawn-sh "BEMOJI_PICKER_CMD=\"fuzzel -d -p 'Emoji: '\" ~/.local/bin/bemoji -n -t"; }
 
     // Please choose your own file manager.
-    MOD+M                               hotkey-overlay-title="File Manager: yazi" { spawn-sh "foot yazi"; }
+    MOD+M                               hotkey-overlay-title="Open App Launcher: Fuzzel launcher" { spawn-sh "fuzzel"; }
 
     // ─── Audio Controls ───
     XF86AUDIORAISEVOLUME                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
