@@ -9,7 +9,7 @@ binds {
     MOD+SHIFT+ESCAPE                     { show-hotkey-overlay; }
 
     // ─── Applications ───
-    MOD+U                               hotkey-overlay-title="Window Switcher" { spawn-sh "~/.local/bin/niri-window-switcher"; }
+    MOD+U                               hotkey-overlay-title="Window Switcher (NiriSeek)" { spawn "/home/smiffeed/.local/bin/niriseek"; }
     MOD+RETURN                          hotkey-overlay-title="Open Terminal: foot" { spawn "foot"; }
     MOD+E                               hotkey-overlay-title="Open App Launcher: Fuzzel launcher" { spawn-sh "fuzzel"; }
     MOD+B                               hotkey-overlay-title="Open Browser: brave" { spawn "brave-browser"; }

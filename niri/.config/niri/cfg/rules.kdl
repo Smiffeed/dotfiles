@@ -27,3 +27,8 @@
           xray false
         }
     }
+
+    window-rule {
+        match app-id="dev.mohit.NiriSeek"
+        open-floating true
+    }
