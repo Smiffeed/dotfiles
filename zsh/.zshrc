@@ -123,3 +123,12 @@ export PATH=/home/smiffeed/.opencode/bin:$PATH
 
 # Added by Antigravity CLI installer
 export PATH="/home/smiffeed/.local/bin:$PATH"
+
+# GitHub Clone Alias Function
+ghclone() {
+    if [ -z "$1" ]; then
+        echo "Usage: ghclone <search-term>"
+        return 1
+    fi
+    gh repo list | grep -i "$1" | awk '{print $1}' | xargs -I {} gh repo clone {}
+}
