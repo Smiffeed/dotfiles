@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Fetch windows from niri, sort by workspace, format them, and pipe to fuzzel
+selected=$(niri msg -j windows | jq -r 'sort_by(.workspace_id) | .[] | "\(.id)\t[WS \( ( " " + (.workspace_id|tostring) )[-2:] )] \(.app_id): \(.title)\u0000icon\u001f\(.app_id | ascii_downcase),\(.app_id),application-x-executable"' | fuzzel -d -p "Focus Window: " --with-nth=2)
+
+# Extract the window ID and focus it
+if [ -n "$selected" ]; then
+    window_id=$(echo "$selected" | awk '{print $1}')
+    niri msg action focus-window --id "$window_id"
+fi
