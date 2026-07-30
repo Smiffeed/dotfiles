@@ -132,3 +132,14 @@ ghclone() {
     fi
     gh repo list | grep -i "$1" | awk '{print $1}' | xargs -I {} gh repo clone {}
 }
+
+# Save image from Wayland clipboard to current directory
+paste-img() {
+    local filename="Pasted_Image_$(date +%Y%m%d_%H%M%S).png"
+    if wl-paste -t image/png > "$filename" 2>/dev/null; then
+        echo "Image saved as $filename"
+    else
+        echo "No image found in clipboard!"
+        rm "$filename" 2>/dev/null
+    fi
+}

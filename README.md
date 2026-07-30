@@ -31,6 +31,11 @@ These tools are heavily customized to my personal preferences, but are completel
 | **Emoji Picker** | [Bemoji](https://github.com/marty-oehme/bemoji) | Configured with auto-paste bypass for Wayland |
 | **Keyboard Mod** | [Kanata](https://github.com/jtroo/kanata) | Advanced software keyboard remapping |
 
+### 3. Custom Commands & Aliases
+I have added a few custom quality-of-life commands to `.zshrc` to speed up common workflows:
+- `ghclone <search-term>`: Instantly searches your GitHub repositories and clones the first match.
+- `paste-img`: Pulls raw image data directly from your Wayland system clipboard and saves it as a `.png` file in your current directory.
+
 ---
 
 ## 🛠️ How it Works (GNU Stow)
