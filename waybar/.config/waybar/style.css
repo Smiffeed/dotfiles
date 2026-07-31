@@ -33,6 +33,13 @@ window#waybar {
     transition: all 0.2s ease-in-out;
 }
 
+#hardware #backlight {
+    padding-right: 6px;
+}
+#hardware #pulseaudio {
+    padding-left: 6px;
+}
+
 #network:hover {
     background-color: rgba(50, 50, 53, 0.55);
 }
@@ -60,13 +67,10 @@ tooltip label {
 #custom-logo,
 #custom-power,
 #mpris,
-#pulseaudio.muted,
-#pulseaudio,
+#hardware,
 #bluetooth,
 #network.disconnected,
-#backlight,
 #battery,
-#network.disconnected,
 #cpu,
 #tray,
 #memory,

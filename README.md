@@ -101,7 +101,7 @@ rm -f ~/.zshrc ~/.vimrc
 ### 4. Symlink with Stow
 Run the following command from inside the `~/Workspace/dotfiles` directory to safely generate symlinks:
 ```bash
-stow -v -t ~ niri waybar zsh vim tmux mako foot fuzzel
+stow -v -t ~ niri waybar zsh vim tmux mako foot fuzzel yazi
 ```
 *   `-v` (Verbose): Prints a confirmation checklist of every link created.
 *   `-t ~` (Target): Explicitly targets your User Home folder.
