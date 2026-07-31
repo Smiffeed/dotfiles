@@ -1,0 +1,12 @@
+[opener]
+edit = [
+	{ run = 'nvim "$@"', block = true, desc = "Edit" },
+]
+browser = [
+    { run = 'xdg-open "$@"', orphan = true, desc = "Open in browser" }
+]
+
+[open]
+prepend_rules = [
+	{ name = "*.html", use = [ "browser", "edit" ] }
+]
