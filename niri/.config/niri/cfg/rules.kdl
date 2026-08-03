@@ -5,6 +5,7 @@
 
     window-rule {
       match app-id="foot"
+      match app-id="Alacritty"
       background-effect {
         blur true
         xray false
