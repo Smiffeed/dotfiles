@@ -36,6 +36,9 @@ I have added a few custom quality-of-life commands to `.zshrc` to speed up commo
 - `ghclone <search-term>`: Instantly searches your GitHub repositories and clones the first match.
 - `paste-img`: Pulls raw image data directly from your Wayland system clipboard and saves it as a `.png` file in your current directory.
 
+### 4. Special Keybinds
+- `MOD+SHIFT+V`: A universal force-paste shortcut for Wine/Proton games running under XWayland. It uses `wtype` to read your Wayland clipboard and type it out as raw keystrokes, completely bypassing the broken clipboard synchronization between Wayland and Wine!
+
 ---
 
 ## 🛠️ How it Works (GNU Stow)

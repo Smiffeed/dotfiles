@@ -126,6 +126,9 @@ binds {
     MOD+SHIFT+MINUS                     { set-window-height "-10%"; }
     MOD+SHIFT+EQUAL                     { set-window-height "+10%"; }
 
+    // ─── Wayland/Wine Clipboard Paste Fix ───
+    MOD+SHIFT+V                         hotkey-overlay-title="Force Paste into Game (Wine)" { spawn "sh" "-c" "sleep 0.3 && wl-paste | wtype -"; }
+
     // ─── Modes ───
     MOD+T                               { toggle-window-floating; }
     MOD+F                               { maximize-column; }
