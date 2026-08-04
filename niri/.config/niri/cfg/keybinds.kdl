@@ -34,14 +34,14 @@ binds {
     // ─── Window Movement and Focus ───
     MOD+Q                               { close-window; }
 
-    MOD+LEFT                            { focus-column-left; }
-    MOD+H                               { focus-column-left; }
-    MOD+RIGHT                           { focus-column-right; }
-    MOD+L                               { focus-column-right; }
-    MOD+UP                              { focus-window-up; }
-    MOD+K                               { focus-window-up; }
-    MOD+DOWN                            { focus-window-down; }
-    MOD+J                               { focus-window-down; }
+    MOD+LEFT                            allow-inhibiting=false { focus-column-left; }
+    MOD+H                               allow-inhibiting=false { focus-column-left; }
+    MOD+RIGHT                           allow-inhibiting=false { focus-column-right; }
+    MOD+L                               allow-inhibiting=false { focus-column-right; }
+    MOD+UP                              allow-inhibiting=false { focus-window-up; }
+    MOD+K                               allow-inhibiting=false { focus-window-up; }
+    MOD+DOWN                            allow-inhibiting=false { focus-window-down; }
+    MOD+J                               allow-inhibiting=false { focus-window-down; }
 
     MOD+CTRL+LEFT                       { move-column-left; }
     MOD+CTRL+H                          { move-column-left; }
@@ -95,15 +95,15 @@ binds {
     MOD+CTRL+SHIFT+WHEELSCROLLDOWN      { move-column-right; }
     MOD+CTRL+SHIFT+WHEELSCROLLUP        { move-column-left; }
 
-    MOD+1                               { focus-workspace 1; }
-    MOD+2                               { focus-workspace 2; }
-    MOD+3                               { focus-workspace 3; }
-    MOD+4                               { focus-workspace 4; }
-    MOD+5                               { focus-workspace 5; }
-    MOD+6                               { focus-workspace 6; }
-    MOD+7                               { focus-workspace 7; }
-    MOD+8                               { focus-workspace 8; }
-    MOD+9                               { focus-workspace 9; }
+    MOD+1                               allow-inhibiting=false { focus-workspace 1; }
+    MOD+2                               allow-inhibiting=false { focus-workspace 2; }
+    MOD+3                               allow-inhibiting=false { focus-workspace 3; }
+    MOD+4                               allow-inhibiting=false { focus-workspace 4; }
+    MOD+5                               allow-inhibiting=false { focus-workspace 5; }
+    MOD+6                               allow-inhibiting=false { focus-workspace 6; }
+    MOD+7                               allow-inhibiting=false { focus-workspace 7; }
+    MOD+8                               allow-inhibiting=false { focus-workspace 8; }
+    MOD+9                               allow-inhibiting=false { focus-workspace 9; }
 
     MOD+CTRL+1                          { move-column-to-workspace 1; }
     MOD+CTRL+2                          { move-column-to-workspace 2; }

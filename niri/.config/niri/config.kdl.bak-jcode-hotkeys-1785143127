@@ -1,0 +1,23 @@
+// This config is in the KDL format: https://kdl.dev
+// "/-" comments out the following node.
+// Check the wiki for a full description of the configuration:
+// https://niri-wm.github.io/niri/Configuration:-Introduction
+
+// Input device configuration.
+// Find the full list of options on the wiki:
+// https://niri-wm.github.io/niri/Configuration:-Input
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+include "cfg/autostart.kdl"
+include "cfg/keybinds.kdl"
+include "cfg/input.kdl"
+include "cfg/layout.kdl"
+include "cfg/rules.kdl"
+include "cfg/misc.kdl"
+
+binds {
+    // >>> jcode launch hotkeys (managed) >>>
+    Super+Semicolon hotkey-overlay-title="jcode: home" { spawn "sh" "-c" "if [ -d '/home/smiffeed' ]; then cd '/home/smiffeed'; else cd \"$HOME\"; fi; exec 'foot' '/home/smiffeed/.jcode/builds/versions/0.60.0/jcode-linux-x86_64.bin' --spawn-hotkey 'cmd+;'"; }
+    Super+Apostrophe hotkey-overlay-title="jcode: last project" { spawn "sh" "-c" "if [ -d '/home/smiffeed' ]; then cd '/home/smiffeed'; else cd \"$HOME\"; fi; exec 'foot' '/home/smiffeed/.jcode/builds/versions/0.60.0/jcode-linux-x86_64.bin' --spawn-hotkey 'cmd+'\\'''"; }
+    Super+Shift+Apostrophe hotkey-overlay-title="jcode: self-dev (self-dev)" { spawn "sh" "-c" "if [ -d '/home/smiffeed' ]; then cd '/home/smiffeed'; else cd \"$HOME\"; fi; exec 'foot' '/home/smiffeed/.jcode/builds/versions/0.60.0/jcode-linux-x86_64.bin' --spawn-hotkey 'cmd+shift+'\\''' self-dev"; }
+    // <<< jcode launch hotkeys (managed) <<<
+}

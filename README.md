@@ -104,7 +104,7 @@ rm -f ~/.zshrc ~/.vimrc
 ### 4. Symlink with Stow
 Run the following command from inside the `~/Workspace/dotfiles` directory to safely generate symlinks:
 ```bash
-stow -v -t ~ niri waybar zsh vim tmux mako foot fuzzel yazi
+stow -v -t ~ niri waybar zsh vim tmux mako foot fuzzel yazi pipewire
 ```
 *   `-v` (Verbose): Prints a confirmation checklist of every link created.
 *   `-t ~` (Target): Explicitly targets your User Home folder.
@@ -142,6 +142,22 @@ To cleanly remove configurations and delete the symlinks without deleting your r
 cd ~/Workspace/dotfiles
 stow -D -t ~ niri waybar
 ```
+
+---
+
+## 🔧 Troubleshooting & Hardware Fixes
+
+### 1. NVIDIA Advanced Optimus Brightness Bug
+If you have a laptop with an AMD iGPU and NVIDIA dGPU with Advanced Optimus (or a MUX switch), your brightness keys might work on battery but fail when plugged in. This happens because plugging into AC switches the display directly to the NVIDIA GPU, which hides backlight controls by default.
+**Fix:** Add `nvidia.NVreg_EnableBacklightHandler=1` to your kernel parameters.
+1. Edit `/etc/default/grub`
+2. Add `nvidia.NVreg_EnableBacklightHandler=1` to `GRUB_CMDLINE_LINUX`
+3. Run `sudo grub2-mkconfig -o /boot/grub2/grub.cfg` and reboot.
+
+### 2. "Device busy" error with High-Res Audio (ALSA)
+If you get a "device or resource busy" error when trying to use exclusive ALSA output for a high-res DAC (like a FiiO) in a music player like Strawberry, it means PipeWire is holding onto the device.
+**Fix:** Instead of using ALSA bypass, just allow PipeWire to switch sample rates dynamically. 
+The `pipewire` package in this repository handles this automatically (deploy via `stow pipewire`), providing seamless up-to-384kHz support without the exclusive ALSA lock errors.
 
 ---
 
