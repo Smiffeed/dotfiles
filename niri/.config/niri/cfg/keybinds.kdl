@@ -19,7 +19,7 @@ binds {
     MOD+PERIOD { spawn-sh "BEMOJI_PICKER_CMD=\"fuzzel -d -p 'Emoji: '\" ~/.local/bin/bemoji -n -t"; }
 
     // Please choose your own file manager.
-    MOD+M                               hotkey-overlay-title="File Manager: Superfile" { spawn "foot" "/usr/local/bin/spf"; }
+    MOD+M                               hotkey-overlay-title="File Manager: Yazi" { spawn "foot" "yazi"; }
 
     // ─── Audio Controls ───
     XF86AUDIORAISEVOLUME                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
@@ -150,4 +150,10 @@ binds {
     CTRL+ALT+DELETE                     { quit; } // Also quits Niri
     MOD+SHIFT+P                         { power-off-monitors; } // Turn off screens (useful for OLED or privacy)
     MOD+O                               repeat=false { toggle-overview; }
+
+    // >>> jcode launch hotkeys (managed) >>>
+    Super+Semicolon hotkey-overlay-title="jcode: dotfiles" { spawn "sh" "-c" "if [ -d '/home/smiffeed/Workspace/dotfiles' ]; then cd '/home/smiffeed/Workspace/dotfiles'; else cd \"$HOME\"; fi; exec 'foot' '/home/smiffeed/.jcode/builds/versions/0.60.0/jcode-linux-x86_64.bin' --spawn-hotkey 'cmd+;'"; }
+    Super+Apostrophe hotkey-overlay-title="jcode: home" { spawn "sh" "-c" "if [ -d '/home/smiffeed' ]; then cd '/home/smiffeed'; else cd \"$HOME\"; fi; exec 'foot' '/home/smiffeed/.jcode/builds/versions/0.60.0/jcode-linux-x86_64.bin' --spawn-hotkey 'cmd+'\\'''"; }
+    Super+bracketleft hotkey-overlay-title="jcode: Obsidian-Notes" { spawn "sh" "-c" "if [ -d '/home/smiffeed/Workspace/Obsidian-Notes' ]; then cd '/home/smiffeed/Workspace/Obsidian-Notes'; else cd \"$HOME\"; fi; exec 'foot' '/home/smiffeed/.jcode/builds/versions/0.60.0/jcode-linux-x86_64.bin' --spawn-hotkey 'cmd+['"; }
+    // <<< jcode launch hotkeys (managed) <<<
 }
