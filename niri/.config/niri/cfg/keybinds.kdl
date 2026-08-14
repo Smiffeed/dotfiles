@@ -9,10 +9,11 @@ binds {
     MOD+SHIFT+ESCAPE                     { show-hotkey-overlay; }
 
     // ─── Applications ───
-    MOD+U                               hotkey-overlay-title="Window Switcher" { spawn-sh "~/.local/bin/niri-window-switcher"; }
+
     MOD+RETURN                          hotkey-overlay-title="Open Terminal: foot" { spawn "foot"; }
     MOD+E                               hotkey-overlay-title="Open App Launcher: Fuzzel launcher" { spawn-sh "fuzzel"; }
-    MOD+B                               hotkey-overlay-title="Open Browser: brave" { spawn "brave-browser"; }
+    MOD+S                               allow-inhibiting=false hotkey-overlay-title="Window Switcher" { spawn "sh" "-c" "~/Workspaces/dotfiles/niri/.config/niri/scripts/fuzzel-window-switch.sh"; }
+    MOD+B                               hotkey-overlay-title="Open Browser: brave" { spawn "brave-origin"; }
     MOD+ALT+L                           hotkey-overlay-title="Lock Screen: wlogout lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     MOD+SHIFT+E				{ quit; }
     // Launch emoji picker and type the selected character
