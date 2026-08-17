@@ -5,7 +5,7 @@
 WINDOWS=$(niri msg -j windows)
 
 # Format: "Workspace 1: AppName - Window Title" (ID is hidden at the start for awk to grab)
-SELECTION=$(echo "$WINDOWS" | jq -r '.[] | "\(.id) | W\(."workspace-id") | \(."app-id") | \(.title)"' | fuzzel -d -p "Window: ")
+SELECTION=$(echo "$WINDOWS" | jq -r '.[] | "\(.id) | W\(.workspace_id) | \(.app_id) | \(.title)"' | fuzzel -d -p "Window: ")
 
 if [ -n "$SELECTION" ]; then
     WINDOW_ID=$(echo "$SELECTION" | awk -F'|' '{print $1}' | tr -d ' ')
