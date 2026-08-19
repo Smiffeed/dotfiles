@@ -1,4 +1,10 @@
+[opener]
+brave = [
+	{ run = 'brave-origin "$@"', orphan = true, desc = "Open in Brave" }
+]
+
 [open]
 prepend_rules = [
+	{ mime = "application/pdf", use = [ "open", "brave" ] },
 	{ name = "*.html", use = [ "open", "edit" ] }
 ]
