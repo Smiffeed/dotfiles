@@ -10,6 +10,10 @@
     "Darmoshark RF Dongle Keyboard"
     "Darmoshark RF Dongle"
     "Compx Air84@Lofree"
+    "SONIX galaxy100"
+    "SONIX galaxy100 Keyboard"
+    "SONIX galaxy100 Consumer Control"
+    "SONIX galaxy100 System Control"
   )
 )
 
@@ -27,7 +31,7 @@
 
 (defalias
   ;; Tap Caps for Backspace, hold to activate the 'nav' layer
-  nav-bspc (tap-hold 200 200 bspc (layer-toggle nav))
+  nav-bspc (tap-hold-press 1 200 bspc (layer-toggle nav))
   
   ;; Layer Toggles
   tog-sd (layer-switch stardew)
