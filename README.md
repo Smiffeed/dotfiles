@@ -1,4 +1,4 @@
-# My Minimal Wayland Dotfiles
+# My Minimal Niri Dotfiles
 
 ## 📌 About This Repository
 
