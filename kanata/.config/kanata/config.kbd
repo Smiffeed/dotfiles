@@ -32,6 +32,7 @@
 (defalias
   ;; Tap Caps for Backspace, hold to activate the 'nav' layer
   nav-bspc (tap-hold-press 1 200 bspc (layer-toggle nav))
+  nav-sd-bspc (tap-hold-press 1 200 bspc (layer-toggle nav-stardew))
   
   ;; Layer Toggles
   tog-sd (layer-switch stardew)
@@ -53,21 +54,26 @@
 
 (deflayer base
   ;; D and F are normal keys here!
-  @nav-bspc w s d f h j k l c spc @tog-sd x
+  @nav-bspc w s d f h j k l c spc _ x
 )
 
 (deflayer nav
   ;; While holding Capslock: S is Shift, D is Ctrl, F is Escape, C is Capslock Toggle
-  _         M-spc lsft lctl esc left down up right caps _ _ _
+  _         M-spc lsft lctl esc left down up right caps _ @tog-sd _
 )
 
 (deflayer stardew
   ;; Gaming mode: Space is normal. 'x' triggers the animation cancel macro!
-  @nav-bspc w s d f h j k l c spc @tog-bs @trigger
+  @nav-sd-bspc w s d f h j k l c spc _ @trigger
 )
 
 (deflayer stardew-cd
   ;; COOLDOWN LAYER: Identical to stardew layer, but 'x' is disabled (XX).
   ;; This prevents the macro from being restarted if the user spams the key!
-  @nav-bspc w s d f h j k l c spc @tog-bs XX
+  @nav-sd-bspc w s d f h j k l c spc _ XX
+)
+
+(deflayer nav-stardew
+  ;; While holding Capslock in Stardew mode, F12 toggles back to Base
+  _         M-spc lsft lctl esc left down up right caps _ @tog-bs _
 )

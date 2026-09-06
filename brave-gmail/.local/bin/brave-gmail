@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+import sys
+import urllib.parse
+import subprocess
+
+if len(sys.argv) < 2:
+    sys.exit(1)
+
+mailto_url = sys.argv[1]
+
+# Chrome/Brave web handlers on Linux often fail to decode mailto: query parameters
+# correctly. We bypass the internal protocol handler by generating the exact 
+# Gmail compose URL ourselves.
+
+# The safest way is to pass the completely URL-encoded mailto string to Gmail's URL parser:
+encoded_mailto = urllib.parse.quote(mailto_url)
+gmail_url = f"https://mail.google.com/mail/?extsrc=mailto&url={encoded_mailto}"
+
+subprocess.run(["brave-origin", gmail_url])

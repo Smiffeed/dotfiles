@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Use fd to instantly find all normal files and directories in your home folder.
+# We pipe the output directly into fuzzel for searching.
+SELECTION=$(fd . "$HOME" 2>/dev/null | sed "s|$HOME/|~/|" | fuzzel --dmenu --prompt="Find: " -i)
+
+# Exit if the user pressed Escape (no selection)
+if [ -z "$SELECTION" ]; then
+    exit 0
+fi
+
+# Convert the ~ back into the full absolute path (only at the beginning of the string)
+SELECTION="${SELECTION/#\~/$HOME}"
+
+# If it's a directory, open it in superfile using your default Alacritty setup
+if [ -d "$SELECTION" ]; then
+    alacritty -e /usr/local/bin/spf "$SELECTION"
+# If it's a file, open it with the default application in the background
+elif [ -f "$SELECTION" ]; then
+    nohup xdg-open "$SELECTION" >/dev/null 2>&1 &
+fi

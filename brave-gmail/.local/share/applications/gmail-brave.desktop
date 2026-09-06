@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Gmail (Brave)
+Exec=/home/smiffeed/.local/bin/brave-gmail %u
+Type=Application
+Terminal=false
+MimeType=x-scheme-handler/mailto;
