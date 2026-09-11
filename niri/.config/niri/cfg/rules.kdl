@@ -1,6 +1,12 @@
     window-rule {
         geometry-corner-radius 20 // Set every window radius to 20
         clip-to-geometry true
+        open-maximized true
+    }
+
+    layer-rule {
+        match namespace="^noctalia-wallpaper*"
+        place-within-backdrop true
     }
 
     window-rule {
@@ -10,23 +16,6 @@
         blur true
         xray false
       }
-    }
-
-    layer-rule {
-        match namespace="waybar"
-        background-effect {
-          blur true
-          xray false
-        }
-    }
-
-    layer-rule {
-      geometry-corner-radius 10
-        match namespace="^launcher$"
-        background-effect {
-          blur true
-          xray false
-        }
     }
 
     window-rule {
