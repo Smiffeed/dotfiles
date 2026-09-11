@@ -10,11 +10,11 @@ binds {
 
     // ─── Applications ───
 
-    MOD+RETURN                          hotkey-overlay-title="Open Terminal: foot" { spawn "foot"; }
-    MOD+E                               hotkey-overlay-title="Open App Launcher: Fuzzel launcher" { spawn-sh "fuzzel"; }
+    MOD+RETURN                          hotkey-overlay-title="Open Terminal: alacritty" { spawn "alacritty"; }
+    MOD+E                               hotkey-overlay-title="Open App Launcher: Fuzzel launcher" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
     MOD+U                               allow-inhibiting=false hotkey-overlay-title="Window Switcher" { spawn "sh" "-c" "~/Workspaces/dotfiles/niri/.config/niri/scripts/fuzzel-window-switch.sh"; }
     MOD+B                               hotkey-overlay-title="Open Browser: brave" { spawn "brave-origin"; }
-    MOD+ALT+L                           hotkey-overlay-title="Lock Screen: wlogout lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
+    MOD+ALT+L                           hotkey-overlay-title="Lock Screen: wlogout lock" { spawn-sh "wlogout"; }
     MOD+SHIFT+E				{ quit; }
     // Launch emoji picker and type the selected character
     MOD+PERIOD { spawn-sh "BEMOJI_PICKER_CMD=\"fuzzel -d -p 'Emoji: '\" ~/.local/bin/bemoji -n -t"; }
@@ -23,10 +23,10 @@ binds {
     MOD+M                               hotkey-overlay-title="File Manager: Yazi" { spawn "foot" "yazi"; }
 
     // ─── Audio Controls ───
-    XF86AUDIORAISEVOLUME                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
-    XF86AUDIOLOWERVOLUME                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
-    XF86AUDIOMUTE                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
-    XF86AUDIOMICMUTE                    allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteInput"; }
+    XF86AUDIORAISEVOLUME                allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
+    XF86AUDIOLOWERVOLUME                allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
+    XF86AUDIOMUTE                       allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
+    XF86AUDIOMICMUTE                    allow-when-locked=true { spawn-sh "noctalia msg mic-mute"; }
 
     // ─── Brightness Controls ───
     XF86MonBrightnessUp                 allow-when-locked=true { spawn "brightnessctl" "set" "5%+"; }
