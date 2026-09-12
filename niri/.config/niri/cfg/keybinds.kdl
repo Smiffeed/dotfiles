@@ -134,8 +134,8 @@ binds {
     // ─── Modes ───
     MOD+T                               { toggle-window-floating; }
     MOD+SHIFT+T                         { switch-focus-between-floating-and-tiling; }
-    MOD+F                               { maximize-column; }
-    MOD+CTRL+F                          { maximize-window-to-edges; }
+    MOD+F                               { maximize-window-to-edges; }
+    MOD+CTRL+F                          { maximize-column; }
     MOD+SHIFT+F                         { fullscreen-window; }
     MOD+W                               { toggle-column-tabbed-display; }
 
