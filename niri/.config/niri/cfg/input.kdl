@@ -4,22 +4,26 @@
 input {
     keyboard {
         xkb {
-            layout "us,th" // American,Thai keyboard layout (I'm from Thailand, just remove `th`)
+            layout "us,th"
             options "grp:win_space_toggle"
         }
-        numlock // Enable numlock on startup
+        numlock
     }
     
     mouse {
-        accel-speed 0.6 // Adjust this value between -1.0 (very slow) and 1.0 (very fast)
-        accel-profile "flat" // Optional: disables acceleration for consistent speed
+        accel-speed 0.6
+        accel-profile "flat"
+    }
+
+    trackball {
+        accel-speed 0.1
+        accel-profile "flat"
     }
 
     touchpad {
-        tap // Enable tap-to-click
-        natural-scroll // Enable natural (macOS-style) scrolling
+        tap
+        natural-scroll
     }
 
-    // focus-follows-mouse // Automatically focus windows under the mouse pointer
-    workspace-auto-back-and-forth // Enable workspace back & forth switching
+    workspace-auto-back-and-forth
 }
