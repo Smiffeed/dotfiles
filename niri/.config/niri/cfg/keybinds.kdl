@@ -18,7 +18,7 @@ binds {
     MOD+ALT+L                           hotkey-overlay-title="Lock Screen: wlogout lock" { spawn-sh "wlogout"; }
     MOD+SHIFT+E				{ quit; }
     // Launch emoji picker and type the selected character
-    MOD+PERIOD { spawn-sh "BEMOJI_PICKER_CMD=\"fuzzel -d -p 'Emoji: '\" ~/.local/bin/bemoji -n -t"; }
+    MOD+PERIOD { spawn-sh "BEMOJI_PICKER_CMD=\"fuzzel -d -p 'Emoji: '\" ~/.local/bin/bemoji -n -c && sleep 0.1 && wtype -M ctrl -k v -m ctrl"; }
 
     // Please choose your own file manager.
     MOD+M                               hotkey-overlay-title="File Manager: Yazi" { spawn "foot" "yazi"; }
