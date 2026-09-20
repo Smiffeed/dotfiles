@@ -21,7 +21,7 @@ binds {
     MOD+PERIOD { spawn-sh "BEMOJI_PICKER_CMD=\"fuzzel -d -p 'Emoji: '\" ~/.local/bin/bemoji -n -c && sleep 0.1 && wtype -M ctrl -k v -m ctrl"; }
 
     // Please choose your own file manager.
-    MOD+M                               hotkey-overlay-title="File Manager: Yazi" { spawn "foot" "yazi"; }
+    MOD+M                               hotkey-overlay-title="File Manager: Yazi" { spawn "alacritty" "-e" "yazi"; }
 
     // ─── Audio Controls ───
     XF86AUDIORAISEVOLUME                allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
@@ -156,8 +156,8 @@ binds {
     MOD+O                               repeat=false { toggle-overview; }
 
     // >>> jcode launch hotkeys (managed) >>>
-    Super+Semicolon hotkey-overlay-title="jcode: dotfiles" { spawn "sh" "-c" "if [ -d '/home/smiffeed/Workspace/dotfiles' ]; then cd '/home/smiffeed/Workspace/dotfiles'; else cd \"$HOME\"; fi; exec 'foot' '/home/smiffeed/.jcode/builds/versions/0.60.0/jcode-linux-x86_64.bin' --spawn-hotkey 'cmd+;'"; }
-    Super+Apostrophe hotkey-overlay-title="jcode: home" { spawn "sh" "-c" "if [ -d '/home/smiffeed' ]; then cd '/home/smiffeed'; else cd \"$HOME\"; fi; exec 'foot' '/home/smiffeed/.jcode/builds/versions/0.60.0/jcode-linux-x86_64.bin' --spawn-hotkey 'cmd+'\\'''"; }
-    Super+bracketleft hotkey-overlay-title="jcode: Obsidian-Notes" { spawn "sh" "-c" "if [ -d '/home/smiffeed/Workspace/Obsidian-Notes' ]; then cd '/home/smiffeed/Workspace/Obsidian-Notes'; else cd \"$HOME\"; fi; exec 'foot' '/home/smiffeed/.jcode/builds/versions/0.60.0/jcode-linux-x86_64.bin' --spawn-hotkey 'cmd+['"; }
+    Super+Semicolon hotkey-overlay-title="jcode: dotfiles" { spawn "sh" "-c" "if [ -d '/home/smiffeed/Workspace/dotfiles' ]; then cd '/home/smiffeed/Workspace/dotfiles'; else cd \"$HOME\"; fi; exec 'alacritty' '-e' '/home/smiffeed/.jcode/builds/versions/0.60.0/jcode-linux-x86_64.bin' --spawn-hotkey 'cmd+;'"; }
+    Super+Apostrophe hotkey-overlay-title="jcode: home" { spawn "sh" "-c" "if [ -d '/home/smiffeed' ]; then cd '/home/smiffeed'; else cd \"$HOME\"; fi; exec 'alacritty' '-e' '/home/smiffeed/.jcode/builds/versions/0.60.0/jcode-linux-x86_64.bin' --spawn-hotkey 'cmd+'\\'''"; }
+    Super+bracketleft hotkey-overlay-title="jcode: Obsidian-Notes" { spawn "sh" "-c" "if [ -d '/home/smiffeed/Workspace/Obsidian-Notes' ]; then cd '/home/smiffeed/Workspace/Obsidian-Notes'; else cd \"$HOME\"; fi; exec 'alacritty' '-e' '/home/smiffeed/.jcode/builds/versions/0.60.0/jcode-linux-x86_64.bin' --spawn-hotkey 'cmd+['"; }
     // <<< jcode launch hotkeys (managed) <<<
 }
