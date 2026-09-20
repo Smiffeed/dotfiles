@@ -16,7 +16,7 @@ input {
     }
 
     trackball {
-        accel-speed -0.2
+        accel-speed -0.3
         accel-profile "flat"
     }
 
