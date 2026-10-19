@@ -40,16 +40,16 @@ inactive = { fg = "#61afef", bg = "#282c34" }
 
 [mode]
 
-normal_main = { fg = "#121317", bg = "#61afef", bold = true }
-normal_alt  = { fg = "#61afef", bg = "#282c34" }
+normal_main = { fg = "#0e1214", bg = "#61afef", bold = true }
+normal_alt  = { fg = "#e5e9f0", bg = "#282c34", bold = true }
 
 # Select mode
-select_main = { fg = "#121317", bg = "#56b6c2", bold = true }
-select_alt  = { fg = "#56b6c2", bg = "#282c34" }
+select_main = { fg = "#0e1214", bg = "#98c379", bold = true }
+select_alt  = { fg = "#e5e9f0", bg = "#282c34", bold = true }
 
 # Unset mode
-unset_main = { fg = "#121317", bg = "#d19a66", bold = true }
-unset_alt  = { fg = "#d19a66", bg = "#282c34" }
+unset_main = { fg = "#0e1214", bg = "#d19a66", bold = true }
+unset_alt  = { fg = "#e5e9f0", bg = "#282c34", bold = true }
 
 # : }}}
 
@@ -172,8 +172,8 @@ rules = [
 	# Virtual file system
 	{ mime = "vfs/{absent,stale}", fg = "#5c6370" },
 	# Fallback
-	{ name = "*", fg = "#abb2bf" },
-	{ name = "*/", fg = "#61afef" },
+	{ url = "*", fg = "#abb2bf" },
+	{ url = "*/", fg = "#61afef" },
 ]
 
 # : }}}

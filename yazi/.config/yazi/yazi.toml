@@ -6,5 +6,5 @@ brave = [
 [open]
 prepend_rules = [
 	{ mime = "application/pdf", use = [ "open", "brave" ] },
-	{ name = "*.html", use = [ "open", "edit" ] }
+	{ url = "*.html", use = [ "open", "edit" ] }
 ]
