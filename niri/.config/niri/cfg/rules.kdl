@@ -21,3 +21,10 @@
         match app-id="dev.mohit.NiriSeek"
         open-floating true
     }
+
+    window-rule {
+        match app-id="^file_chooser$"
+        open-floating true
+        default-column-width { fixed 1000; }
+        default-window-height { fixed 650; }
+    }

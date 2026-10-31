@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Yazi
+Comment=Yazi File Manager
+Exec=foot yazi %u
+Terminal=false
+Type=Application
+Icon=yazi
+MimeType=inode/directory;
+Categories=System;FileManager;
