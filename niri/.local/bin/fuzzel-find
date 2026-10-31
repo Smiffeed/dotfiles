@@ -1,21 +1,94 @@
 #!/usr/bin/env bash
 
-# Use fd to instantly find all normal files and directories in your home folder.
-# We pipe the output directly into fuzzel for searching.
-SELECTION=$(fd . "$HOME" 2>/dev/null | sed "s|$HOME/|~/|" | fuzzel --dmenu --prompt="Find: " -i)
+# Directories to exclude to keep search instant and avoid junk caches/builds
+EXCLUDES=(
+    -E .git
+    -E .cache
+    -E .wine
+    -E .steam
+    -E .var
+    -E .cargo
+    -E .rustup
+    -E .bun
+    -E node_modules
+    -E '.local/share/Steam'
+    -E '.local/share/Trash'
+    -E '.local/share/flatpak'
+)
 
-# Exit if the user pressed Escape (no selection)
+# 1. Search files and directories including hidden dotfiles (.agents, .claude, etc.)
+# 2. Format with Python into 2 tab-separated fields:
+#    Col 1: Display string: "<name>    (<parent>)" (e.g. "Stardew Valley.md    (~/Workspaces/Obsidian-Notes)")
+#    Col 2: Clean absolute path
+# 3. Fuzzel displays col 1 (--with-nth=1) and returns col 2 (--accept-nth=2)
+SELECTION=$(
+    fd --hidden "${EXCLUDES[@]}" . "$HOME" 2>/dev/null | python3 -c '
+import sys, os
+
+home = os.path.expanduser("~")
+for line in sys.stdin:
+    path = line.rstrip("\r\n")
+    if not path:
+        continue
+    is_dir = path.endswith("/")
+    clean_path = path[:-1] if is_dir else path
+    parent, name = os.path.split(clean_path)
+    if not name:
+        continue
+    
+    if parent == home:
+        rel_parent = "~"
+    elif parent.startswith(home + "/"):
+        rel_parent = "~/" + parent[len(home) + 1:]
+    else:
+        rel_parent = parent
+        
+    display_name = name + ("/" if is_dir else "")
+    display_line = f"{display_name}    ({rel_parent})"
+    print(f"{display_line}\t{clean_path}")
+' | fuzzel \
+    --dmenu \
+    --prompt="Find: " \
+    --match-mode=fzf \
+    --with-nth=1 \
+    --accept-nth=2 \
+    --width=85 \
+    --lines=12 \
+    -i
+)
+
+# Exit if user cancelled
 if [ -z "$SELECTION" ]; then
     exit 0
 fi
 
-# Convert the ~ back into the full absolute path (only at the beginning of the string)
-SELECTION="${SELECTION/#\~/$HOME}"
-
-# If it's a directory, open it in superfile using your default Alacritty setup
+# 1. Directories -> Open in Yazi inside Foot
 if [ -d "$SELECTION" ]; then
-    alacritty -e /usr/local/bin/spf "$SELECTION"
-# If it's a file, open it with the default application in the background
-elif [ -f "$SELECTION" ]; then
+    exec foot yazi "$SELECTION"
+fi
+
+# 2. Files -> Check if text file to open in Neovim, else system default
+if [ -f "$SELECTION" ]; then
+    filename=$(basename "$SELECTION")
+    ext="${filename##*.}"
+    ext_lower=$(printf '%s' "$ext" | tr '[:upper:]' '[:lower:]')
+
+    # Match common text/script/config extensions
+    case "$ext_lower" in
+        txt|sh|bash|zsh|fish|csv|tsv|md|markdown|json|yaml|yml|toml|kdl|conf|ini|cfg|lua|py|c|cpp|h|hpp|rs|go|js|ts|jsx|tsx|html|css|scss|sass|xml|sql|log|diff|patch|env|service)
+            exec foot nvim "$SELECTION"
+            ;;
+    esac
+
+    # Check mime type for extensionless files (e.g. Makefile, LICENSE, dotfiles)
+    mime=$(file -b --mime-type "$SELECTION" 2>/dev/null)
+    case "$mime" in
+        text/*|application/json|application/x-shellscript|application/xml|application/javascript)
+            exec foot nvim "$SELECTION"
+            ;;
+    esac
+
+    # Media, PDFs, images, etc. -> Open with desktop default
     nohup xdg-open "$SELECTION" >/dev/null 2>&1 &
+    exit 0
 fi
