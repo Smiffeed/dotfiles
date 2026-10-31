@@ -124,6 +124,11 @@ export PATH=/home/smiffeed/.opencode/bin:$PATH
 # Added by Antigravity CLI installer
 export PATH="/home/smiffeed/.local/bin:$PATH"
 
+# Initialize zoxide (smart cd)
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+fi
+
 # GitHub Clone Alias Function
 ghclone() {
     if [ -z "$1" ]; then
