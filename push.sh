@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ~/Workspace/dotfiles/
+cd "$(dirname "$0")" || exit 1
 
 git add .
 
