@@ -1,4 +1,4 @@
-spawn-at-startup "noctalia" "-d"
+spawn-sh-at-startup "~/.local/bin/bar-autostart"
 spawn-at-startup "wl-clip-persist" "--clipboard" "both"
 spawn-at-startup "mako"
 spawn-at-startup "kdeconnectd"

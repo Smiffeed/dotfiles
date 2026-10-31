@@ -11,7 +11,7 @@ binds {
     // ─── Applications ───
 
     MOD+RETURN                          hotkey-overlay-title="Open Terminal: alacritty" { spawn "alacritty"; }
-    MOD+E                               hotkey-overlay-title="Open App Launcher: Fuzzel launcher" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    MOD+E                               hotkey-overlay-title="Open App Launcher: Fuzzel launcher" { spawn-sh "~/.local/bin/desktop-helper launcher"; }
     MOD+S                               hotkey-overlay-title="Find File/Folder" { spawn-sh "~/.local/bin/fuzzel-find"; }
     MOD+U                               allow-inhibiting=false hotkey-overlay-title="Window Switcher" { spawn "sh" "-c" "~/Workspaces/dotfiles/niri/.config/niri/scripts/fuzzel-window-switch.sh"; }
     MOD+B                               hotkey-overlay-title="Open Browser: brave" { spawn "brave-origin"; }
@@ -24,10 +24,10 @@ binds {
     MOD+M                               hotkey-overlay-title="File Manager: Yazi" { spawn "foot" "yazi"; }
 
     // ─── Audio Controls ───
-    XF86AUDIORAISEVOLUME                allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
-    XF86AUDIOLOWERVOLUME                allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
-    XF86AUDIOMUTE                       allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
-    XF86AUDIOMICMUTE                    allow-when-locked=true { spawn-sh "noctalia msg mic-mute"; }
+    XF86AUDIORAISEVOLUME                allow-when-locked=true { spawn-sh "~/.local/bin/desktop-helper volume-up"; }
+    XF86AUDIOLOWERVOLUME                allow-when-locked=true { spawn-sh "~/.local/bin/desktop-helper volume-down"; }
+    XF86AUDIOMUTE                       allow-when-locked=true { spawn-sh "~/.local/bin/desktop-helper volume-mute"; }
+    XF86AUDIOMICMUTE                    allow-when-locked=true { spawn-sh "~/.local/bin/desktop-helper mic-mute"; }
 
     // ─── Brightness Controls ───
     XF86MonBrightnessUp                 allow-when-locked=true { spawn "brightnessctl" "set" "5%+"; }

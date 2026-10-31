@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Autostart the appropriate bar/shell depending on host and available binaries.
+# On CachyOS desktop: Noctalia shell
+# On Laptop: Waybar
+
+export PATH="$HOME/.local/bin:$PATH"
+
+if [ "$(hostname)" = "cachyos" ] && command -v noctalia >/dev/null 2>&1; then
+    exec noctalia -d
+elif command -v waybar >/dev/null 2>&1; then
+    exec waybar
+elif command -v noctalia >/dev/null 2>&1; then
+    exec noctalia -d
+else
+    echo "bar-autostart: No supported bar (noctalia or waybar) found on PATH" >&2
+    exit 1
+fi

@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# Universal desktop action helper for volume and application launcher.
+# Delegates to Noctalia if running; falls back to standard Wayland/PipeWire tools (wpctl, fuzzel).
+
+export PATH="$HOME/.local/bin:$PATH"
+
+ACTION="$1"
+
+is_noctalia_running() {
+    pgrep -x noctalia >/dev/null 2>&1
+}
+
+case "$ACTION" in
+    volume-up)
+        if is_noctalia_running; then
+            noctalia msg volume-up
+        else
+            wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+        fi
+        ;;
+    volume-down)
+        if is_noctalia_running; then
+            noctalia msg volume-down
+        else
+            wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+        fi
+        ;;
+    volume-mute)
+        if is_noctalia_running; then
+            noctalia msg volume-mute
+        else
+            wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+        fi
+        ;;
+    mic-mute)
+        if is_noctalia_running; then
+            noctalia msg mic-mute
+        else
+            wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+        fi
+        ;;
+    launcher)
+        if is_noctalia_running; then
+            noctalia msg panel-toggle launcher
+        else
+            fuzzel
+        fi
+        ;;
+    *)
+        echo "Usage: desktop-helper {volume-up|volume-down|volume-mute|mic-mute|launcher}" >&2
+        exit 1
+        ;;
+esac
