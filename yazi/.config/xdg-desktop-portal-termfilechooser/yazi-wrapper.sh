@@ -31,7 +31,7 @@ if [ "$save" = "1" ]; then
         created_file=1
     fi
 
-    foot --app-id="file_chooser" --title="Save File: [Enter] Overwrite file | [q] Save into folder | [a] New name" yazi --chooser-file="$out" --cwd-file="$cwd_file" "$path"
+    foot --app-id="file_chooser" --title="Save File: [Enter] Overwrite file | [q] Save into folder | [a] New name" yazi --chooser-file="$out" --cwd-file="$cwd_file" "$path" || true
 
     # If user pressed Enter on a file, $out already has the chosen file path.
     # If $out is empty, but user navigated into a folder and pressed 'q',
@@ -63,7 +63,7 @@ else
         title="Choose File: [l/→] Open folder | [Enter] Choose | [q] Cancel"
     fi
 
-    foot --app-id="file_chooser" --title="$title" yazi --chooser-file="$out" --cwd-file="$cwd_file" "$path"
+    foot --app-id="file_chooser" --title="$title" yazi --chooser-file="$out" --cwd-file="$cwd_file" "$path" || true
 
     # Fallback for directory mode: if user navigated into a folder and exited with 'q'
     if [ ! -s "$out" ] && [ -s "$cwd_file" ]; then

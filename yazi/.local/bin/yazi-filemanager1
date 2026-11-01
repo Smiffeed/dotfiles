@@ -44,7 +44,10 @@ class FileManagerService(dbus.service.Object):
 if __name__ == '__main__':
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     session_bus = dbus.SessionBus()
-    service = FileManagerService(session_bus)
+    try:
+        service = FileManagerService(session_bus)
+    except dbus.exceptions.NameExistsException:
+        sys.exit(0)
     loop = GLib.MainLoop()
     try:
         loop.run()
