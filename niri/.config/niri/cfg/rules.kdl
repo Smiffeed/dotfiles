@@ -28,3 +28,9 @@
         default-column-width { fixed 1000; }
         default-window-height { fixed 650; }
     }
+
+    window-rule {
+        match app-id="(?i)dragon"
+        match app-id="(?i)ripdrag"
+        open-floating true
+    }
