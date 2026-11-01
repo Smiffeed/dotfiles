@@ -7,9 +7,13 @@ save="$3"
 path="$4"
 out="$5"
 
-# If path is empty, default to $HOME
-if [ -z "$path" ]; then
-    path="$HOME"
+# If path is empty or does not exist, default to Downloads if available, else $HOME
+if [ -z "$path" ] || [ ! -e "$path" ]; then
+    if [ -d "$HOME/Downloads" ]; then
+        path="$HOME/Downloads"
+    else
+        path="$HOME"
+    fi
 fi
 
 cwd_file=$(mktemp)
@@ -45,12 +49,44 @@ if [ "$save" = "1" ]; then
             rm -f "$path"
         fi
     fi
-elif [ "$directory" = "1" ]; then
-    # Selecting a directory:
-    # Navigating into a folder and pressing 'q' chooses that directory via --cwd-file
-    foot --app-id="file_chooser" --title="Choose Directory - Yazi" yazi --cwd-file="$out" "$path"
+
+    if [ ! -s "$out" ]; then
+        rm -f "$out"
+    fi
 else
-    # Opening / selecting file(s):
-    # Pressing Enter on file(s) chooses them via --chooser-file
-    foot --app-id="file_chooser" --title="Open File - Yazi" yazi --chooser-file="$out" "$path"
+    # Opening / selecting file(s) or directory
+    if [ "$multiple" = "1" ]; then
+        title="Select Multiple: [Space] Select | [v] Range | [Ctrl+a] All | [Enter] Confirm"
+    elif [ "$directory" = "1" ]; then
+        title="Choose Directory: [Space] Select Folder | [Enter] Confirm | [q] Cancel"
+    else
+        title="Choose File: [l/→] Open folder | [Enter] Choose | [q] Cancel"
+    fi
+
+    foot --app-id="file_chooser" --title="$title" yazi --chooser-file="$out" --cwd-file="$cwd_file" "$path"
+
+    # Fallback for directory mode: if user navigated into a folder and exited with 'q'
+    if [ ! -s "$out" ] && [ -s "$cwd_file" ]; then
+        if [ "$directory" = "1" ]; then
+            cp "$cwd_file" "$out"
+        fi
+    fi
+
+    # Sanitize output list: keep only valid existing items
+    if [ -s "$out" ]; then
+        out_filtered=$(mktemp)
+        while IFS= read -r item || [ -n "$item" ]; do
+            if [ -n "$item" ] && [ -e "$item" ]; then
+                printf '%s\n' "$item"
+            fi
+        done < "$out" > "$out_filtered"
+
+        if [ -s "$out_filtered" ]; then
+            mv "$out_filtered" "$out"
+        else
+            rm -f "$out_filtered" "$out"
+        fi
+    else
+        rm -f "$out"
+    fi
 fi
