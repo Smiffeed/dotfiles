@@ -24,6 +24,8 @@ This directory contains definitions and skills for AI agents to help manage this
 - **File Manager & Chooser Portal**:
   - Yazi file manager: `yazi/.config/yazi/` (`yazi.toml`, `keymap.toml`, `package.toml`)
   - Desktop portal file chooser wrapper: `yazi/.config/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh`
+- **Editor**:
+  - Neovim / LazyVim: `nvim/.config/nvim/` (`init.lua`, `lazyvim.json`, `lazy-lock.json`, `lua/`)
 - **System Roots & Paths**:
   - Workspaces root: `~/Workspaces` (symlinked via `~/Workspace -> ~/Workspaces`)
   - Validation script: `./check.sh`
