@@ -10,6 +10,7 @@
         QT_QPA_PLATFORMTHEME "gtk3"
         SDL_GAMECONTROLLER_IGNORE_DEVICES "0x0001/0x0001"
         GTK_USE_PORTAL "1"
+        QT_USE_PORTAL "1"
     }
 
     debug {
