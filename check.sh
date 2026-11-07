@@ -54,6 +54,20 @@ while IFS= read -r script; do
     fi
 done < <(find "$REPO_DIR" -type f \( -name "*.sh" -o -path "*/bin/*" \) -not -path "*/.git/*" | sort)
 
+# 4. Check syntax of Lua configurations (Neovim)
+if command -v luac >/dev/null 2>&1 && [ -d "$REPO_DIR/nvim" ]; then
+    while IFS= read -r lua_file; do
+        rel_path="${lua_file#$REPO_DIR/}"
+        if luac -p "$lua_file" >/dev/null 2>&1; then
+            echo "  OK (lua): $rel_path"
+        else
+            echo "  FAILED (lua): $rel_path"
+            luac -p "$lua_file"
+            ERRORS=$((ERRORS + 1))
+        fi
+    done < <(find "$REPO_DIR/nvim" -type f -name "*.lua" 2>/dev/null | sort)
+fi
+
 if [ "$ERRORS" -gt 0 ]; then
     echo "==> Validation FAILED with $ERRORS error(s)."
     exit 1
