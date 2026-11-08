@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -e
+
+# Query current input method from Fcitx5
+current=$(gdbus call --session --dest org.fcitx.Fcitx5 --object-path /controller --method org.fcitx.Fcitx.Controller1.CurrentInputMethod 2>/dev/null | tr -d "()',")
+
+case "$current" in
+    keyboard-us)
+        next="keyboard-th"
+        ;;
+    keyboard-th)
+        next="mozc"
+        ;;
+    *)
+        next="keyboard-us"
+        ;;
+esac
+
+fcitx5-remote -s "$next"

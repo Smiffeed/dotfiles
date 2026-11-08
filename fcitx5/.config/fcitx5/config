@@ -1,0 +1,9 @@
+[Hotkey]
+# Enumerate when press trigger key repeatedly
+EnumerateWithTriggerKeys=True
+# Skip first input method while enumerating
+EnumerateSkipFirst=False
+
+[Hotkey/TriggerKeys]
+0=Control+space
+1=Zenkaku_Hankaku
