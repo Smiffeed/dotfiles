@@ -50,7 +50,7 @@ Instead of copying files directly into your system, Stow creates **symbolic link
 The folder structure is organized into modular app "packages". Notice how `.config` files and root home files (like `.zshrc`) are handled differently:
 
 ```text
-~/Workspace/dotfiles/
+~/Workspaces/dotfiles/
 ├── niri/              <-- Package Wrapper Name
 │   └── .config/
 │       └── niri/      <-- Links to ~/.config/niri/
@@ -87,8 +87,8 @@ sudo apt install stow
 ### 2. Clone the Repository
 Clone the dotfiles into your workspace folder:
 ```bash
-mkdir -p ~/Workspace
-cd ~/Workspace
+mkdir -p ~/Workspaces
+cd ~/Workspaces
 git clone https://github.com/Smiffeed/dotfiles.git
 cd dotfiles
 ```
@@ -102,9 +102,9 @@ rm -f ~/.zshrc ~/.vimrc
 ```
 
 ### 4. Symlink with Stow
-Run the following command from inside the `~/Workspace/dotfiles` directory to safely generate symlinks:
+Run the following command from inside the `~/Workspaces/dotfiles` directory to safely generate symlinks:
 ```bash
-stow -v -t ~ niri waybar noctalia zsh vim tmux mako foot fuzzel yazi pipewire nvim
+stow -v -t ~ niri waybar noctalia zsh vim tmux mako foot fuzzel yazi pipewire nvim fcitx5
 ```
 *   `-v` (Verbose): Prints a confirmation checklist of every link created.
 *   `-t ~` (Target): Explicitly targets your User Home folder.
@@ -117,13 +117,13 @@ stow -v -t ~ niri waybar noctalia zsh vim tmux mako foot fuzzel yazi pipewire nv
 To track a new configuration folder (e.g., `foot`), mimic the home directory layout inside the repo:
 ```bash
 # 1. Create the mirrored directory path inside dotfiles
-mkdir -p ~/Workspace/dotfiles/foot/.config/
+mkdir -p ~/Workspaces/dotfiles/foot/.config/
 
 # 2. Move your real local configuration inside it
-mv ~/.config/foot ~/Workspace/dotfiles/foot/.config/
+mv ~/.config/foot ~/Workspaces/dotfiles/foot/.config/
 
 # 3. Use Stow to link it back to your system
-cd ~/Workspace/dotfiles
+cd ~/Workspaces/dotfiles
 stow -v -t ~ foot
 ```
 
@@ -132,14 +132,14 @@ stow -v -t ~ foot
 ### Restowing / Updating Links
 If you add new loose script files inside an existing configuration folder, force Stow to refresh and recalculate the symlinks using **Restow (`-R`)**:
 ```bash
-cd ~/Workspace/dotfiles
+cd ~/Workspaces/dotfiles
 stow -R -v -t ~ waybar
 ```
 
 ### Unstowing / Removing Links
 To cleanly remove configurations and delete the symlinks without deleting your repository files, run **Delete (`-D`)**:
 ```bash
-cd ~/Workspace/dotfiles
+cd ~/Workspaces/dotfiles
 stow -D -t ~ niri waybar
 ```
 
@@ -168,7 +168,7 @@ This repository includes custom AI Agent Skills (in `.agents/skills/`) designed 
 ### Syncing Changes
 When pushing updates, we strictly use **Conventional Commits** (e.g., `feat(niri): update keybinds`). A script is provided to enforce this workflow:
 ```bash
-cd ~/Workspace/dotfiles
+cd ~/Workspaces/dotfiles
 ./push.sh "feat(scope): your commit message here"
 ```
 

@@ -26,8 +26,10 @@ This directory contains definitions and skills for AI agents to help manage this
   - Desktop portal file chooser wrapper: `yazi/.config/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh`
 - **Editor**:
   - Neovim / LazyVim: `nvim/.config/nvim/` (`init.lua`, `lazyvim.json`, `lazy-lock.json`, `lua/`)
+- **Input Method (IME)**:
+  - Fcitx5 (Japanese Mozc): `fcitx5/.config/fcitx5/` (`config`, `profile`)
 - **System Roots & Paths**:
-  - Workspaces root: `~/Workspaces` (symlinked via `~/Workspace -> ~/Workspaces`)
+  - Workspaces root: `~/Workspaces`
   - Validation script: `./check.sh`
 
 ## Available Skills

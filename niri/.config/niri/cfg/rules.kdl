@@ -34,3 +34,17 @@
         match app-id="(?i)ripdrag"
         open-floating true
     }
+
+    window-rule {
+        match app-id="(?i)fcitx"
+        open-floating true
+        focus-ring {
+            off
+        }
+        border {
+            off
+        }
+        shadow {
+            off
+        }
+    }

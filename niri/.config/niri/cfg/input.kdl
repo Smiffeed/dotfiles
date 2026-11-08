@@ -4,8 +4,7 @@
 input {
     keyboard {
         xkb {
-            layout "us,th"
-            options "grp:win_space_toggle"
+            layout "us"
         }
         numlock
     }
