@@ -30,7 +30,44 @@ if command -v fuzzel >/dev/null 2>&1; then
     fi
 fi
 
-# 3. Check syntax of all executable scripts and shell scripts
+# 3. Validate TOML Configurations (including Yazi schema)
+if command -v python3 >/dev/null 2>&1; then
+    echo -n "Checking TOML configurations (including Yazi rules)... "
+    toml_error=$(python3 -c "
+import tomllib, glob, sys, os
+repo = '$REPO_DIR'
+errors = []
+for root, _, files in os.walk(repo):
+    if '/.git' in root:
+        continue
+    for f in files:
+        if f.endswith('.toml'):
+            path = os.path.join(root, f)
+            rel = os.path.relpath(path, repo)
+            try:
+                with open(path, 'rb') as fp:
+                    data = tomllib.load(fp)
+                if f == 'yazi.toml' and 'open' in data:
+                    for sec in ['rules', 'prepend_rules', 'append_rules']:
+                        for r in data['open'].get(sec, []):
+                            if 'url' not in r and 'mime' not in r:
+                                errors.append(f'{rel} [open.{sec}]: rule {r} missing url or mime')
+            except Exception as e:
+                errors.append(f'{rel}: {e}')
+if errors:
+    print('\n'.join(errors))
+    sys.exit(1)
+" 2>&1)
+    if [ $? -eq 0 ]; then
+        echo "OK"
+    else
+        echo "FAILED"
+        echo "$toml_error"
+        ERRORS=$((ERRORS + 1))
+    fi
+fi
+
+# 4. Check syntax of all executable scripts and shell scripts
 echo "Checking script syntax..."
 while IFS= read -r script; do
     shebang=$(head -n 1 "$script" 2>/dev/null || true)
@@ -54,7 +91,7 @@ while IFS= read -r script; do
     fi
 done < <(find "$REPO_DIR" -type f \( -name "*.sh" -o -path "*/bin/*" \) -not -path "*/.git/*" | sort)
 
-# 4. Check syntax of Lua configurations (Neovim)
+# 5. Check syntax of Lua configurations (Neovim)
 if command -v luac >/dev/null 2>&1 && [ -d "$REPO_DIR/nvim" ]; then
     while IFS= read -r lua_file; do
         rel_path="${lua_file#$REPO_DIR/}"
