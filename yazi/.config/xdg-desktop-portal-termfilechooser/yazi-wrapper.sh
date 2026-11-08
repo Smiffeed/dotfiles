@@ -7,46 +7,57 @@ save="$3"
 path="$4"
 out="$5"
 
-# If path is empty or does not exist, default to Downloads if available, else $HOME
-if [ -z "$path" ] || [ ! -e "$path" ]; then
-    if [ -d "$HOME/Downloads" ]; then
-        path="$HOME/Downloads"
-    else
-        path="$HOME"
-    fi
-fi
-
 cwd_file=$(mktemp)
 trap 'rm -f "$cwd_file"' EXIT
 
 if [ "$save" = "1" ]; then
-    filename=$(basename "$path")
-    created_file=0
-
-    # If suggested target doesn't exist yet, touch it so Yazi displays it
-    if [ ! -e "$path" ]; then
+    if [ -n "$path" ] && [ ! -d "$path" ]; then
         dir=$(dirname "$path")
-        mkdir -p "$dir"
-        touch "$path"
-        created_file=1
+        filename=$(basename "$path")
+    else
+        if [ -d "$path" ]; then
+            dir="$path"
+        elif [ -d "$HOME/Downloads" ]; then
+            dir="$HOME/Downloads"
+        else
+            dir="$HOME"
+        fi
+        filename=""
     fi
 
-    foot --app-id="file_chooser" --title="Save File: [Enter] Overwrite file | [q] Save into folder | [a] New name" yazi --chooser-file="$out" --cwd-file="$cwd_file" "$path" || true
+    if [ ! -d "$dir" ]; then
+        mkdir -p "$dir" 2>/dev/null || dir="$HOME"
+    fi
+
+    created_file=0
+    target_entry="$dir"
+
+    # If suggested target doesn't exist yet, touch it so Yazi displays it
+    if [ -n "$filename" ]; then
+        target="$dir/$filename"
+        if [ ! -e "$target" ]; then
+            touch "$target"
+            created_file=1
+        fi
+        target_entry="$target"
+    fi
+
+    foot --app-id="file_chooser" --title="Save File: [Enter] Confirm | [q] Save into folder | [a] New name | [Q] Cancel" yazi --chooser-file="$out" --cwd-file="$cwd_file" "$target_entry" || true
 
     # If user pressed Enter on a file, $out already has the chosen file path.
     # If $out is empty, but user navigated into a folder and pressed 'q',
-    # save the file into that folder with the suggested filename.
+    # save the file into that folder with the suggested filename (if available).
     if [ ! -s "$out" ] && [ -s "$cwd_file" ]; then
         chosen_dir=$(cat "$cwd_file")
-        if [ -d "$chosen_dir" ]; then
+        if [ -d "$chosen_dir" ] && [ -n "$filename" ]; then
             echo "$chosen_dir/$filename" > "$out"
         fi
     fi
 
     # Clean up the placeholder if it was saved elsewhere or cancelled
     if [ "$created_file" = "1" ]; then
-        if [ ! -s "$out" ] || [ "$(cat "$out" 2>/dev/null)" != "$path" ]; then
-            rm -f "$path"
+        if [ ! -s "$out" ] || [ "$(cat "$out" 2>/dev/null)" != "$target" ]; then
+            rm -f "$target"
         fi
     fi
 
@@ -54,6 +65,15 @@ if [ "$save" = "1" ]; then
         rm -f "$out"
     fi
 else
+    # If path is empty or does not exist, default to Downloads if available, else $HOME
+    if [ -z "$path" ] || [ ! -e "$path" ]; then
+        if [ -d "$HOME/Downloads" ]; then
+            path="$HOME/Downloads"
+        else
+            path="$HOME"
+        fi
+    fi
+
     # Opening / selecting file(s) or directory
     if [ "$multiple" = "1" ]; then
         title="Select Multiple: [Space] Select | [v] Range | [Ctrl+a] All | [Enter] Confirm"
