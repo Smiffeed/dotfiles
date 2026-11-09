@@ -2,3 +2,8 @@
 on   = [ "<C-d>" ]
 run  = "plugin drag"
 desc = "Drag selected files"
+
+[[mgr.prepend_keymap]]
+on   = [ "<C-o>" ]
+run  = "open --interactive"
+desc = "Open with..."

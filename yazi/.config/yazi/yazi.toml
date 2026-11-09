@@ -1,16 +1,17 @@
 [opener]
 edit = [
-	{ run = 'nvim "$@"', block = true, desc = "nvim" },
+	{ run = 'nvim %s', block = true, desc = "nvim" },
 ]
-brave = [
-	{ run = 'brave-origin "$@"', orphan = true, desc = "Open in Brave" }
+brave-origin = [
+	{ run = 'brave-origin %s', orphan = true, desc = "Open in Brave Origin" }
 ]
 
 [open]
 prepend_rules = [
+	{ url = "*.{html,htm,xhtml}", use = [ "brave-origin", "edit", "reveal" ] },
+	{ mime = "text/html", use = [ "brave-origin", "edit", "reveal" ] },
 	{ url = "*.{md,markdown,txt}", use = [ "edit", "reveal" ] },
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
 	{ mime = "application/{json,ndjson,yaml,x-yaml,toml,xml,javascript,x-sh,sql}", use = [ "edit", "reveal" ] },
-	{ mime = "application/pdf", use = [ "open", "brave" ] },
-	{ url = "*.html", use = [ "open", "edit" ] }
+	{ mime = "application/pdf", use = [ "open", "brave-origin" ] },
 ]
